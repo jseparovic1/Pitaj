@@ -177,6 +177,11 @@ return [
         Pitaj\Providers\EventServiceProvider::class,
         Pitaj\Providers\RouteServiceProvider::class,
 
+        /**
+         * Materialize Sass
+         */
+        Qntm\LaravelMaterializeSass\MaterializeSassServiceProvider::class,
+
     ],
 
     /*
@@ -225,6 +230,11 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+
+        /**
+         * Aliasses for custom classes
+         */
+        'MaterializeSass' => Qntm\LaravelMaterializeSass\MaterializeSassBuilder::class,
 
     ],
 
