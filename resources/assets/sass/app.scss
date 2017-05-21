@@ -1,12 +1,13 @@
-
 // Fonts
 @import url('https://fonts.googleapis.com/css?family=Raleway:500,500i,800,800i');
+
+// colors
+//@import "color";
+
+//variables
+//@import "variables";
 
 //base css
 @import "base";
 
-// colors
-@import "color";
-
-//variables
-@import "variables";
+@import "form";

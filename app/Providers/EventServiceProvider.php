@@ -13,8 +13,9 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        'Pitaj\Events\Event' => [
-            'Pitaj\Listeners\EventListener',
+        'Pitaj\Events\Registered' => [
+            'Pitaj\Listeners\SetActivationToken',
+            'Pitaj\Listeners\SendActivationEmail',
         ],
     ];
 

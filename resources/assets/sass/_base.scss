@@ -2,14 +2,21 @@ body {
     background-color: #F9F9F9;
     color: rgba(0,0,0,.8);
     font-family: 'Roboto', sans-serif;
-    font-weight: 100;
+    font-weight: 300;
     font-style: normal;
     line-height: 1.2;
     margin: 0;
-    display: block;
     letter-spacing: 0;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
 }
 
-html {
-    font-family: sans-serif;
+main {
+    flex: 1 0 auto;
 }
+
+.main {
+    margin: 5% auto;
+}
+

@@ -16,6 +16,8 @@ class AuthServiceProvider extends ServiceProvider
         'Pitaj\Model' => 'Pitaj\Policies\ModelPolicy',
     ];
 
+
+
     /**
      * Register any authentication / authorization services.
      *

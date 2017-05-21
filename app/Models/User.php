@@ -1,6 +1,6 @@
 <?php
 
-namespace Pitaj;
+namespace Pitaj\Models;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'lastName',
     ];
 
     /**
@@ -26,4 +26,13 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    /*
+     * Get activation token
+     */
+    public function activation()
+    {
+        return $this->hasOne(Activation::class);
+    }
+
 }

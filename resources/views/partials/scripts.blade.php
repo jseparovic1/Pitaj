@@ -1,0 +1,2 @@
+<!-- Materialize js -->
+{!! MaterializeSass::includeMaterialize() !!}
