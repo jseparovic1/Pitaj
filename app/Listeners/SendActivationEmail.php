@@ -2,16 +2,16 @@
 
 namespace Pitaj\Listeners;
 
+use Mail;
 use Pitaj\Events\Registered;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Pitaj\Mail\Activation;
 
 class SendActivationEmail
 {
     /**
      * Create the event listener.
-     *
-     * @return void
      */
     public function __construct()
     {
@@ -26,6 +26,9 @@ class SendActivationEmail
      */
     public function handle(Registered $event)
     {
-        dd("send activation email!");
+        $user = $event->getUser();
+
+        Mail::to($user)
+            ->queue(new Activation($user));
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Repositories;
+namespace Pitaj\Repositories;
 
 use Pitaj\Models\Activation;
 
@@ -25,5 +25,4 @@ class ActivationRepository
     {
         return hash_hmac('sha256', str_random(40), config('app.key'));
     }
-
 }

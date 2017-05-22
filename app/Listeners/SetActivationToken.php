@@ -2,8 +2,8 @@
 
 namespace Pitaj\Listeners;
 
-use Pitaj\Repositories\ActivationRepository;
 use Pitaj\Events\Registered;
+use Pitaj\Repositories\ActivationRepository;
 
 class SetActivationToken
 {
@@ -28,7 +28,8 @@ class SetActivationToken
     public function handle(Registered $event)
     {
         $user = $event->getUser();
-        $user->activation()->token = $this->activationRepository->makeToken();
-        $user->save();
+        $user->activation()->create([
+            'token' => $this->activationRepository->makeToken()
+        ]);
     }
 }

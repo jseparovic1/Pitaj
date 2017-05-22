@@ -27,7 +27,7 @@ class CreateUsersTable extends Migration
         Schema::create('users_activation' , function (Blueprint $table) {
            $table->increments('user_id')->references('id')->on('users');
            $table->string('token')->nullable();
-           $table->timestamp('created_at');
+           $table->timestamps();
         });
     }
 
