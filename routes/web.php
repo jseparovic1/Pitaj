@@ -11,15 +11,28 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+/**
+ * Home page
+ */
+Route::get('/', 'Home\HomeController@index');
 
 /**
  * Auth routes
  */
-Route::get('/register', 'Auth\RegisterController@showForm')->name('register.showForm');
-Route::post('/register', 'Auth\RegisterController@register')->name('register.create');
-Route::post('/confirm/', 'Auth\RegisterController@register')->name('register.activate');
+Route::group(['namespace' => 'Auth'], function () {
+    Route::get('/register', 'RegisterController@showForm')->name('register.showForm');
+    Route::post('/register', 'RegisterController@register')->name('register.create');
+    Route::post('/register/success', 'RegisterController@finished')->name('register.success');
+
+    //activation
+    Route::get('/confirm/', 'ActivationController@activate')->name('register.activate');
+
+    //login
+    Route::get('/login', 'LoginController@showLoginForm')->name('session.loginForm');
+    Route::post('/login', 'LoginController@login')->name('session.logIn');
+    Route::post('/logout', 'LoginController@logout')->name('session.logOut');
+});
+
+
 
 

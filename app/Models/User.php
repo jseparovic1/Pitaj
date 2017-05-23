@@ -35,4 +35,10 @@ class User extends Authenticatable
         return $this->hasOne(Activation::class);
     }
 
+    public function activate()
+    {
+        $this->activated = 1;
+        $this->save();
+    }
+
 }
