@@ -33,6 +33,8 @@ Route::group(['namespace' => 'Auth'], function () {
     Route::get('/logout', 'LoginController@logout')->name('session.logOut');
 });
 
+Route::get('/ask', 'QuestionController@showForm')->name('question.askForm');
+
 
 
 
