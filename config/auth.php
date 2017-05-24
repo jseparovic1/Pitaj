@@ -67,7 +67,7 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => Pitaj\User::class,
+            'model' => Pitaj\Models\User::class,
         ],
 
         // 'users' => [

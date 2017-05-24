@@ -14,7 +14,7 @@
 /**
  * Home page
  */
-Route::get('/', 'Home\HomeController@index');
+Route::get('/', 'HomeController@index')->name('home');
 
 /**
  * Auth routes
@@ -30,7 +30,7 @@ Route::group(['namespace' => 'Auth'], function () {
     //login
     Route::get('/login', 'LoginController@showLoginForm')->name('session.loginForm');
     Route::post('/login', 'LoginController@login')->name('session.logIn');
-    Route::post('/logout', 'LoginController@logout')->name('session.logOut');
+    Route::get('/logout', 'LoginController@logout')->name('session.logOut');
 });
 
 

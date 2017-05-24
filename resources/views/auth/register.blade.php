@@ -1,4 +1,4 @@
-@extends('master')
+@extends('masterAuth')
 
 @section('title', 'Registracija')
 
