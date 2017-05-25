@@ -6,10 +6,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="keywords" content="pitaj, pitanja , odgovori, znanje, dijeljenje">
 
-        <title> @yield('title') | pitaj.hr </title>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+        <title> @yield('title') | Pitaj.hr </title>
 
         @include('partials.style')
-        @include('partials.scripts')
     </head>
     <body>
         <header>
@@ -25,5 +26,8 @@
         <footer class="page-footer">
             @include('partials.footer')
         </footer>
+        @include('partials.scripts')
+        <script>
+        </script>
     </body>
 </html>
