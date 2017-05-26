@@ -34,7 +34,7 @@ Route::group(['namespace' => 'Auth'], function () {
 });
 
 Route::get('/ask', 'QuestionController@showForm')->name('question.askForm');
-Route::post('/ask', 'QuestionController@showForm')->name('question.store');
+Route::post('/ask', 'QuestionController@store')->name('question.store');
 
 
 
