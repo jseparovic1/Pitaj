@@ -35,10 +35,21 @@ class User extends Authenticatable
         return $this->hasOne(Activation::class);
     }
 
+    /**
+     * Get all user questions
+     */
+    public function questions()
+    {
+        return $this->hasMany(Question::class, 'author_id');
+    }
+
+    /**
+     * Activate user
+     */
     public function activate()
     {
         $this->activated = 1;
+        $this->token = '';
         $this->save();
     }
-
 }
