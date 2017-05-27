@@ -4,6 +4,7 @@ namespace Pitaj\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Pitaj\Models\Question;
+use Pitaj\Models\Tag;
 
 class QuestionController extends Controller
 {
@@ -25,25 +26,23 @@ class QuestionController extends Controller
      * Store question
      *
      * @param Request $request
-     * @param Question $question
      */
     public function store(Request $request)
     {
         $this->validate($request, [
-           'question' => 'required|string|max:200',
-            'chips' => 'required|size:1'
+            'question' => 'required|string',
         ]);
-        $body = $request->input('question');
-        $tags = $request->input('chips');
 
-        $question = new Question();
-        $question->body = $body;
+        $tags =  $request->input('tags');
+        $question = $request->input('question');
 
-        foreach ($tags as $tag) {
-            $question->tags()->attach($tag);
-        }
+        $tags = json_decode($tags);
+        $question = new Question(['title' => $question, 'views' => 123]);
 
-        $user = $request->user();
-        $user->createQuestion();
+        //publish question
+        $request->user()->publish($question , $tags);
+
+        //TODO fire question created event
+        return "fuck yeah!";
     }
 }

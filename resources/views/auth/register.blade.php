@@ -8,18 +8,18 @@
             {{ csrf_field() }}
             <div class="row">
                 <div class="input-field col s6">
-                    <input id="first_name" type="text" class="validate" name="firstName" value="{{ old('firstName') }}>
-                    <label for="first_name">Ime </label>
+                    <input id="firstName" type="text" class="validate" name="firstName" value="{{ old('firstName') }}">
+                    <label for="firstName">Ime </label>
                 </div>
                 <div class="input-field col s6">
-                    <input id="last_name" type="text" class="validate" name="lastName" value="{{ old('lastName') }}>
-                    <label for="last_name">Prezime</label>
+                    <input id="lastName" type="text" class="validate" name="lastName" value="{{ old('lastName') }}">
+                    <label for="lastName">Prezime</label>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col s12">
-                    <input id="email" type="email" class="validate" name="email" value="{{ old('email') }}>
-                    <label for="email" data-error="Upišite ispravnu email adresu" >
+                    <input id="email" type="email" class="validate" name="email" value="{{ old('email') }}">
+                    <label for="email" data-error="Upišite ispravnu email adresu">
                     Email
                     </label>
                 </div>

@@ -7,6 +7,8 @@ use Pitaj\Models\Tag;
 
 class Question extends Model
 {
+    protected $guarded = [];
+
     /**
      * Get all tags associated with question
      */

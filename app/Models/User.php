@@ -49,7 +49,22 @@ class User extends Authenticatable
     public function activate()
     {
         $this->activated = 1;
-        $this->token = '';
+        $this->activation()->first()->token = '';
         $this->save();
+    }
+
+    /**
+     * Publish new question with given tags
+     *
+     * @param $question Question
+     * @param $tags Tag
+     */
+    public function publish($question, $tags)
+    {
+        $this->questions()->save($question);
+        foreach ($tags as $tag) {
+            $tag = Tag::firstOrCreate(['name' => $tag->tag]);
+            $question->tags()->attach($tag);
+        }
     }
 }
