@@ -33,16 +33,16 @@
             let questionVal = question.val();
 
             chips = $('.chips').material_chip('data');
-            console.log(chips.length);
+            chips = JSON.stringify(chips);
+
             if (questionVal === '' || chips.length < 1) {
                 $('label[for="question"]').attr('data-error', 'Polje je obavezno');
                 question.removeClass("valid");
                 question.addClass("invalid");
-                return;
             } else {
                 $.post('/ask', {
                     question : questionVal ,
-                    chips : chips,
+                    tags : chips,
                     _token : token
                 }).done(function (data) {
                     console.log(data);
