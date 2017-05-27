@@ -20,6 +20,7 @@
             <div class="container">
                 <div class="row main">
                     @yield('content')
+                    @yield('sidebar')
                 </div>
             </div>
         </main>

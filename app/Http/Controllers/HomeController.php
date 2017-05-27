@@ -3,11 +3,13 @@
 namespace Pitaj\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Pitaj\Models\Question;
 
 class HomeController extends Controller
 {
-    public function index()
+    public function index(Question $question)
     {
-        return view('home');
+        $questions = $question::latest()->get();
+        return view('home', compact('questions'));
     }
 }
