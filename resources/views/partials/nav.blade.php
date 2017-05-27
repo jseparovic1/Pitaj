@@ -2,7 +2,7 @@
     <div class="navbar-fixed">
         <div class="row">
             <div class="col s10 offset-s1">
-                <a href="#" class="brand-logo">Logo</a>
+                <a href="{{ route('home') }}" class="brand-logo">Pitaj</a>
 
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
                     @if( Auth::check() )

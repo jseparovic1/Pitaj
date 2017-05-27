@@ -41,13 +41,12 @@
                 question.addClass("invalid");
             } else {
                 $.post('/ask', {
-                    question : questionVal ,
+                    question : questionVal,
                     tags : chips,
                     _token : token
                 }).done(function (data) {
                     console.log(data);
-                    //go home after you are done
-                   // window.location.href = "/";
+                    window.location.href = "/";
                 });
             }
         }

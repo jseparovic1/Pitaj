@@ -8,8 +8,12 @@ use Pitaj\Models\Tag;
 
 class QuestionController extends Controller
 {
+    /**
+     * QuestionController constructor.
+     */
     public function __construct()
     {
+        //set auth middleware so only authenticated user can access this page
         $this->middleware('auth');
     }
 
@@ -36,13 +40,13 @@ class QuestionController extends Controller
         $tags =  $request->input('tags');
         $question = $request->input('question');
 
+        //TODO set json content type when sending ajax and avoid this
         $tags = json_decode($tags);
-        $question = new Question(['title' => $question, 'views' => 123]);
+
+        $slug = str_slug($question);
+        $question = new Question(['title' => $question, 'slug' => $slug]);
 
         //publish question
-        $request->user()->publish($question , $tags);
-
-        //TODO fire question created event
-        return "fuck yeah!";
+        $request->user()->publish($question, $tags);
     }
 }

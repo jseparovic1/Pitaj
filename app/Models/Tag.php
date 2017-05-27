@@ -2,12 +2,13 @@
 
 namespace Pitaj\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Pitaj\Models\ModelBase;
 
-class Tag extends Model
+class Tag extends ModelBase
 {
-    protected $guarded = [];
-
+    /**
+     * Find all questions associated with tag
+     */
     public function questions()
     {
         return $this->belongsToMany(Question::class, 'question_tag');

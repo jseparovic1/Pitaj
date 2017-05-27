@@ -2,17 +2,14 @@
 
 namespace Pitaj\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Pitaj\Models\ModelBase;
 
-class Activation extends Model
+class Activation extends ModelBase
 {
-
-    protected $table = 'users_activation';
-
     /**
-     * The attributes that are guarded.
+     * Models table
      *
-     * @var array
+     * @var string
      */
-    protected $guarded = [];
+    protected $table = 'users_activation';
 }
