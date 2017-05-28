@@ -32,20 +32,26 @@ class User extends Authenticatable
      */
     public function activate()
     {
+        //We can acces properties of model and his relationship
+        //with dynamic properties
         $this->activated = 1;
-        $this->activation()->first()->token = '';
+        $this->activation->token = '';
         $this->save();
     }
 
     /**
      * Publish new question with given tags
      *
-     * @param $question Question
+     * @param $title
      * @param $tags Tag
      */
-    public function publish($question, $tags)
+    public function publish($title, $tags)
     {
-        $this->questions()->save($question);
+        $question = $this->questions()->create([
+            'title' => $title,
+            'slug' => str_slug($title)
+        ]);
+
         foreach ($tags as $tag) {
             $tag = Tag::firstOrCreate(['name' => $tag->tag]);
             $question->tags()->attach($tag);
