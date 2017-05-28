@@ -24,11 +24,25 @@ class Question extends ModelBase
         return $this->belongsTo(User::class, 'author_id', 'id');
     }
 
+    /**
+     * All answers for selected question
+     */
+    public function answers()
+    {
+        return $this->hasMany(Answer::class, 'question_id');
+    }
+
+    /**
+     * Format created_at in human readable format, like 10 days ago
+     */
     public function createdForHuman()
     {
         return $this->created_at->diffForHumans();
     }
 
+    /**
+     * Get most popular questions
+     */
     public function scopePopular()
     {
         //TODO make popular scope

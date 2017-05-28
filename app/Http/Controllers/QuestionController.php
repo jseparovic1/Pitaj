@@ -14,7 +14,7 @@ class QuestionController extends Controller
     public function __construct()
     {
         //set auth middleware so only authenticated user can access this page
-        $this->middleware('auth');
+        $this->middleware('auth')->except('show');
     }
 
     /**
@@ -50,8 +50,11 @@ class QuestionController extends Controller
 
     /**
      * Show single question
+     * @param $id
+     * @param null $slug
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\View\View
      */
-    public function show($id, $slug)
+    public function show($id, $slug = null)
     {
         $question = Question::findOrFail($id);
 
@@ -59,7 +62,7 @@ class QuestionController extends Controller
         if (empty($slug)) {
             return redirect()->route('question.single', [
                 'id' => $id,
-                'slug' => $slug
+                'slug' => $question->slug
             ]);
         }
 

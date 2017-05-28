@@ -35,7 +35,7 @@ Route::group(['namespace' => 'Auth'], function () {
 
 Route::get('/pitaj', 'QuestionController@showForm')->name('question.askForm');
 Route::post('/pitaj', 'QuestionController@store')->name('question.store');
-Route::get('/pitanja/{id}/{slug}', 'QuestionController@show')->name('question.single');
+Route::get('/pitanja/{id}/{slug?}', 'QuestionController@show')->name('question.single');
 
 
 
