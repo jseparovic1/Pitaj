@@ -8,7 +8,7 @@
             {{ csrf_field() }}
             <div class="row">
                 <div class="input-field col s12">
-                    <input id="email" type="email" class="validate" name="email">
+                    <input id="email" type="email" class="validate" name="email" value="{{ old('email') }}">
                     <label for="email" data-error="Upišite ispravnu email adresu" >
                         Email
                     </label>
