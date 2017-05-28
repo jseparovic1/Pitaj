@@ -20,7 +20,7 @@
     </div>
     <div id="row">
         <div class="col">
-            <span> <i class="tiny material-icons">pageview</i> <span>{{ $question->views }}</span></span>
+            <span> <i class="tiny material-icons">visibility</i> <span>{{ $question->views }}</span></span>
             <span> | Answers </span>
         </div>
     </div>

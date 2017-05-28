@@ -3,6 +3,7 @@
 @section('title', $question->title)
 
 @section('content')
+    {{-- Show single question --}}
     <div class="card-panel col s12 m8 l8">
         <header class="section" id="questionTitle">
             <h5 class="h1"> {{ $question->title }}</h5>
@@ -26,17 +27,26 @@
             </section>
         </main>
     </div>
+
     {{-- Answers area --}}
     <div class="col s12 m8 l8">
         @if(count($answers = $question->answers()->get()) > 0)
-            <h6>Komentara <span style="color:red; font-weight: 600">8</span></h6>
-            {{--Display all answers--}}
+            <h6>Komentara
+                <span style="color:red; font-weight: 600">
+                    {{ count($answers) }}
+                </span>
+            </h6>
+            {{-- Display all answers --}}
             @each('question.answers' , $answers, 'answer')
         @else
-            <h6>No comments yet</h6>
+            <div class="section center-align">
+                <i class="material-icons large">mode_edit</i>
+                <h5>Još nema odgovora</h5>
+            </div>
         @endif
+        {{-- include answer from --}}
+        @include('question.answerForm')
     </div>
-
 @endsection
 
 @section('sidebar')
@@ -46,7 +56,7 @@
             <h5>Stats</h5>
             <div id="row">
                 <div class="col">
-                    <span> <i class="tiny material-icons">pageview</i> <span>{{ $question->views }}</span></span>
+                    <span> <i class="tiny material-icons">visibility</i> <span>{{ $question->views }}</span></span>
                 </div>
             </div>
         </div>

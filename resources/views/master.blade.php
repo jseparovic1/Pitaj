@@ -28,7 +28,5 @@
             @include('partials.footer')
         </footer>
         @include('partials.scripts')
-        <script>
-        </script>
     </body>
 </html>

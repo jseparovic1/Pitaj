@@ -3,7 +3,7 @@
 @section('title', 'Pitajte i podijelite svoje znanje')
 
 @section('content')
-    <div class="col s12 m4 l8">
+    <div class="col s12 m8 l8">
         <h5>Aktualno</h5>
         <hr>
         @if(count($questions))
