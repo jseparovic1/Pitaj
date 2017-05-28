@@ -9,7 +9,7 @@ class HomeController extends Controller
 {
     public function index(Question $question)
     {
-        $questions = $question::latest()->get();
+        $questions = $question::latest()->get()->take(10);
         return view('home', compact('questions'));
     }
 }

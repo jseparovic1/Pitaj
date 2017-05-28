@@ -7,11 +7,6 @@
         <h5>Aktualno</h5>
         <hr>
         <div class="card-panel z-depth-1 lighten-5">
-            <i>
-                <i class="tiny material-icons">person_pin</i>
-                {{ $question->author()->first()->name }} on
-                {{ $question->createdForHuman() }}
-            </i>
             <blockquote>
                 <a href="{{ route('question.single', ['id' => $question->id , 'slug' => $question->slug]) }}">
                     {{ $question->title }}
@@ -26,19 +21,26 @@
                     @endforeach
                 </div>
             </div>
-            <div id="row">
-                <div class="col">
-                    <span> <i class="tiny material-icons">pageview</i> <span>{{ $question->views }}</span></span>
-                    <span> | Answers </span>
-                </div>
-            </div>
+            <i>
+                <i class="tiny material-icons">person_pin</i>
+                {{ $question->author()->first()->name }} on
+                {{ $question->createdForHuman() }}
+            </i>
         </div>
     </div>
 @endsection
 
 @section('sidebar')
     <div class="col s12 m4 l4">
-        <h5>Povezana pitanja</h5>
+        <h5>Povezano</h5>
         <hr>
+    </div>
+    <div class="col s12 m4 l4">
+        <h5>Stats</h5>
+        <div id="row">
+            <div class="col">
+                <span> <i class="tiny material-icons">pageview</i> <span>{{ $question->views }}</span></span>
+            </div>
+        </div>
     </div>
 @endsection
