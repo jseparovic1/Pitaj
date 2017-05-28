@@ -28,6 +28,14 @@ class User extends Authenticatable
     }
 
     /**
+     * Get all user answers
+     */
+    public function answers()
+    {
+        return $this->hasMany(Answer::class, 'author_id');
+    }
+
+    /**
      * Activate user
      */
     public function activate()
