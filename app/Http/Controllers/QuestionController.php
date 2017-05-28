@@ -34,19 +34,17 @@ class QuestionController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'question' => 'required|string',
+            'question' => 'required|max:200',
+            'tags' => 'required'
         ]);
 
         $tags =  $request->input('tags');
-        $question = $request->input('question');
+        $title = $request->input('question');
 
         //TODO set json content type when sending ajax and avoid this
         $tags = json_decode($tags);
 
-        $slug = str_slug($question);
-        $question = new Question(['title' => $question, 'slug' => $slug]);
-
         //publish question
-        $request->user()->publish($question, $tags);
+        $request->user()->publish($title, $tags);
     }
 }

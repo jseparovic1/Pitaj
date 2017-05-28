@@ -2,21 +2,11 @@
 
 namespace Pitaj\Models;
 
-use Carbon\Carbon;
 use Pitaj\Models\ModelBase;
-use Pitaj\Models\Tag;
 
 class Question extends ModelBase
 {
-    //TODO implement this
-    /**
-     * The event map for the model.
-     *
-     * @var array
-     */
-    protected $events = [
-        'created' => '',
-    ];
+    //TODO implement created event on question
 
     /**
      * Get all tags associated with question
