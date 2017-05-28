@@ -33,8 +33,9 @@ Route::group(['namespace' => 'Auth'], function () {
     Route::get('/logout', 'LoginController@logout')->name('session.logOut');
 });
 
-Route::get('/ask', 'QuestionController@showForm')->name('question.askForm');
-Route::post('/ask', 'QuestionController@store')->name('question.store');
+Route::get('/pitaj', 'QuestionController@showForm')->name('question.askForm');
+Route::post('/pitaj', 'QuestionController@store')->name('question.store');
+Route::get('/pitanja/{id}/{slug}', 'QuestionController@show')->name('question.single');
 
 
 

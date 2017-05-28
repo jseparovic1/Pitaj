@@ -5,7 +5,9 @@
         {{ $question->createdForHuman() }}
     </i>
     <blockquote>
-        <a href="/question">{{ $question->title }}</a>
+        <a href="{{ route('question.single', ['id' => $question->id , 'slug' => $question->slug]) }}">
+            {{ $question->title }}
+        </a>
     </blockquote>
     <div class="row" id="tags">
         <div class="col">

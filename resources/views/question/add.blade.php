@@ -40,7 +40,7 @@
                 question.removeClass("valid");
                 question.addClass("invalid");
             } else {
-                $.post('/ask', {
+                $.post('/pitaj', {
                     question : questionVal,
                     tags : chips,
                     _token : token

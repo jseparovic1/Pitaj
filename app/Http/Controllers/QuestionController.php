@@ -47,4 +47,22 @@ class QuestionController extends Controller
         //publish question
         $request->user()->publish($title, $tags);
     }
+
+    /**
+     * Show single question
+     */
+    public function show($id, $slug)
+    {
+        $question = Question::findOrFail($id);
+
+        //if slug not provided redirect it to route with slug
+        if (empty($slug)) {
+            return redirect()->route('question.single', [
+                'id' => $id,
+                'slug' => $slug
+            ]);
+        }
+
+        return view('question.show' , compact('question'));
+    }
 }
