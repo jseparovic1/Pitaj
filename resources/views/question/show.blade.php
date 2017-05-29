@@ -30,7 +30,7 @@
 
     {{-- Answers area --}}
     <div class="section" id="answers">
-        @if(count($answers = $question->answers()->get()) > 0)
+        @if(count($answers = $question->answers->sortBy('votes', 1 , true)) > 0)
             <h6>Komentara
                 <span style="color:red; font-weight: 600">
                     {{ count($answers) }}

@@ -25,10 +25,10 @@
         <hr>
         <div class="col s12" id="popular_tags">
             <div class="section center-align">
-                @forelse($tags as $tag)
-                    <span class="badge new" data-badge-caption="">
-                {{ $tag->name }}
-            </span>
+                @forelse($popularTags as $tag)
+                    <div class="tagPopular" id="{{ $tag->id }}">
+                        {{ $tag->name }}
+                    </div>
                 @empty
                     <p>No tags yet</p>
                 @endforelse

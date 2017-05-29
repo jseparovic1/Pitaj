@@ -12,16 +12,16 @@
     <div class="row" id="tags">
         <div class="col s12">
             @foreach( $question->tags as $tag )
-                <span class="chip">
+                <div class="chip">
                     {{ $tag->name }}
-                </span>
+                </div>
             @endforeach
         </div>
     </div>
     <div id="row">
         <div class="col s12">
             <span> <i class="tiny material-icons">visibility</i> <span>{{ $question->views }}</span></span>
-            <span> | Answers </span>
+            <span> Answers {{ count($question->answers) }} </span>
         </div>
     </div>
 </div>
