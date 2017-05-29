@@ -1,9 +1,9 @@
-@extends('master')
+@extends('base.full')
 
 @section('title', $question->title)
 
+{{-- Show single question --}}
 @section('content')
-    {{-- Show single question --}}
     <div class="card-panel">
         <header class="section" id="questionTitle">
             <h5 class="h1"> {{ $question->title }}</h5>

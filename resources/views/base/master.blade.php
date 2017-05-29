@@ -19,11 +19,8 @@
         <main>
             <div class="container">
                 <div class="row">
-                    <div class="col s12 m8 l8">
+                    <div class="col s12">
                         @yield('content')
-                    </div>
-                    <div class="col s12 m4 l4">
-                        @yield('sidebar')
                     </div>
                 </div>
             </div>
@@ -31,6 +28,7 @@
         <footer class="page-footer">
             @include('partials.footer')
         </footer>
+
         @include('partials.scripts')
     </body>
 </html>

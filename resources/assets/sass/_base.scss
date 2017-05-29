@@ -20,3 +20,13 @@ main {
     margin: 5% auto;
 }
 
+h5:before {
+    content: "# ";  /* Some fancy character */
+    color: #3F51B5;
+    opacity: .3;
+    margin-right: .25em;
+}
+
+.page-footer {
+    padding-top: 0;
+}

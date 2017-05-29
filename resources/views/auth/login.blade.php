@@ -1,6 +1,6 @@
-@extends('masterAuth')
+@extends('base.full')
 
-@section('title', 'Registracija')
+@section('title', 'Login')
 
 @section('content')
     <div class="row">

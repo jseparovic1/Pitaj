@@ -1,16 +1,12 @@
 <nav>
     <div class="navbar-fixed">
         <div class="row">
-            <div class="col s10 offset-s1">
+            <div class="col s12">
                 <a href="{{ route('home') }}" class="brand-logo">Pitaj</a>
 
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
                     @if( Auth::check() )
-                        <li>
-                            <a>
-                                <img class="circle" src="https://api.adorable.io/avatars/10/abott@adorable.pngCopy">
-                            </a>
-                        </li>
+                        <li><a>PP</a></li>
                     @endif
                     <li><a href="{{ route('question.askForm') }}">Postavi pitanje</a></li>
                 </ul>

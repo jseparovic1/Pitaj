@@ -1,4 +1,4 @@
-@extends('master')
+@extends('base.master')
 
 @section('title', 'Pitajte i podijelite svoje znanje')
 
@@ -13,7 +13,7 @@
         @else
             <div class="center-align">
                 <i class="material-icons large">code</i>
-                <h5>Još nema pitanja</h5>
+                <h6>Još nema pitanja</h6>
             </div>
         @endif
     </div>
@@ -21,7 +21,7 @@
 
 @section('sidebar')
     <div class="section">
-        <h5 class="sectionTitle">Popularni tagovi</h5>
+        <h5 class="sectionTitle">Popularno</h5>
         <hr>
         <div class="col s12" id="popular_tags">
             <div class="section center-align">
@@ -30,7 +30,7 @@
                         {{ $tag->name }}
                     </div>
                 @empty
-                    <p>No tags yet</p>
+                    <p>Nema tagova još</p>
                 @endforelse
             </div>
         </div>

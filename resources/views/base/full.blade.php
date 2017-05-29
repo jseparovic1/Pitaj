@@ -23,6 +23,7 @@
         </div>
     </main>
     <footer class="page-footer">
+        @include('partials.footer')
     </footer>
     @include('partials.scripts')
 </body>

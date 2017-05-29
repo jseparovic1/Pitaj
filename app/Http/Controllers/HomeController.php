@@ -2,7 +2,6 @@
 
 namespace Pitaj\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Pitaj\Models\Question;
 use Pitaj\Models\Tag;
 
@@ -20,7 +19,7 @@ class HomeController extends Controller
      * @var int
      */
     protected $tagLimit = 5;
-    
+
     /**
      * Show questions and tags
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
