@@ -4,7 +4,7 @@
 
 @section('content')
     {{-- Show single question --}}
-    <div class="card-panel col s12 m8 l8">
+    <div class="card-panel">
         <header class="section" id="questionTitle">
             <h5 class="h1"> {{ $question->title }}</h5>
             <i>
@@ -29,7 +29,7 @@
     </div>
 
     {{-- Answers area --}}
-    <div class="col s12 m8 l8">
+    <div class="section" id="answers">
         @if(count($answers = $question->answers()->get()) > 0)
             <h6>Komentara
                 <span style="color:red; font-weight: 600">
@@ -50,10 +50,10 @@
 @endsection
 
 @section('sidebar')
-    <div class="col s12 m4 l4">
-        <h5>Povezano</h5>
+    <div class="section">
+        <h5 class="side-title">Povezano</h5>
         <div class="section">
-            <h5>Stats</h5>
+            <h5 class="side-title">Statistika</h5>
             <div id="row">
                 <div class="col">
                     <span> <i class="tiny material-icons">visibility</i> <span>{{ $question->views }}</span></span>
