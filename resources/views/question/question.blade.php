@@ -10,16 +10,16 @@
         </a>
     </blockquote>
     <div class="row" id="tags">
-        <div class="col">
+        <div class="col s12">
             @foreach( $question->tags as $tag )
-                <span class="new badge">
+                <span class="chip">
                     {{ $tag->name }}
                 </span>
             @endforeach
         </div>
     </div>
     <div id="row">
-        <div class="col">
+        <div class="col s12">
             <span> <i class="tiny material-icons">visibility</i> <span>{{ $question->views }}</span></span>
             <span> | Answers </span>
         </div>

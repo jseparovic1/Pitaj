@@ -23,5 +23,16 @@
     <div class="col s12 m4 l4">
         <h5>Popularni tagovi</h5>
         <hr>
+        <div class="col s12" id="popular_tags">
+            <div class="section center-align">
+                @forelse($tags as $tag)
+                <span class="badge new" data-badge-caption="">
+                    {{ $tag->name }}
+                </span>
+                @empty
+                    <p>No tags yet</p>
+                @endforelse
+            </div>
+        </div>
     </div>
 @endsection
