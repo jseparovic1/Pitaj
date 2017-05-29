@@ -13,6 +13,9 @@
     @include('partials.style')
 </head>
 <body>
+    <header>
+        @include('partials.nav')
+    </header>
     <main>
         <div class="container">
             <div class="row main">
