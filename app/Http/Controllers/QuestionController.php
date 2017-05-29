@@ -73,27 +73,4 @@ class QuestionController extends Controller
 
         return view('question.show' , compact('question'));
     }
-
-    /**
-     * Add new answer to question
-     *
-     * @param Request $request
-     * @param $id question id
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function addAnswer(Request $request, $id)
-    {
-        $this->validate($request , [
-            'body' => 'required|max:300'
-        ]);
-
-       $question = Question::findOrFail($id);
-
-       $question->answers()->create([
-            'body' => $request->input('body'),
-            'author_id' => $request->user()->id
-       ]);
-
-       return back();
-    }
 }
