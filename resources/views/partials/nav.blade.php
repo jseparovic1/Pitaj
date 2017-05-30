@@ -3,26 +3,17 @@
         <div class="row">
             <div class="col s12">
                 <a href="{{ route('home') }}" class="brand-logo">Pitaj</a>
-
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
+                        <li><a href="{{ route('question.askForm') }}">Postavi pitanje</a></li>
                     @if( Auth::check() )
-                        <li><a>PP</a></li>
+                        <li><a href="">Profil</a></li>
+                        <li><a href="{{ route('session.logOut') }}">Odjava</a></li>
+                    @else
+                        <li><a href="{{ route('session.loginForm') }}">Prijava</a></li>
+                        <li><a href="{{ route('register.showForm') }}">Registracija</a></li>
                     @endif
-                    <li><a href="{{ route('question.askForm') }}">Postavi pitanje</a></li>
                 </ul>
             </div>
         </div>
     </div>
 </nav>
-
-<!-- Maybe for latter add modal -->
-<div id="askQuestionModal" class="modal">
-    <div class="modal-content">
-        <h4>Modal Header</h4>
-        <p>A bunch of text</p>
-    </div>
-    <div class="modal-footer">
-        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
-    </div>
-</div>
-

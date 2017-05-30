@@ -1,31 +1,33 @@
-@extends('base.full')
+@extends('base.column')
 
 @section('title', $question->title)
 
 {{-- Show single question --}}
 @section('content')
-    <div class="card-panel">
-        <header class="section" id="questionTitle">
-            <h5 class="h1"> {{ $question->title }}</h5>
-            <i>
-                {{ $question->author->name }}
-                {{ $question->author->lastName }}
-                {{ $question->createdForHuman() }}
-            </i>
-            <div class="divider"></div>
-        </header>
-        <main id="questionContent">
-            <section>
-                <p>Question body text here</p>
-            </section>
-            <section class="section" id="tags">
-                @foreach( $question->tags as $tag )
-                    <div class="chip">
-                        {{ $tag->name }}
-                    </div>
-                @endforeach
-            </section>
-        </main>
+    <div class="section">
+        <div class="card-panel">
+            <header class="section" id="questionTitle">
+                <h5 class="h1"> {{ $question->title }}</h5>
+                <i>
+                    {{ $question->author->name }}
+                    {{ $question->author->lastName }}
+                    {{ $question->createdForHuman() }}
+                </i>
+                <div class="divider"></div>
+            </header>
+            <main id="questionContent">
+                <section>
+                    <p>Question body text here</p>
+                </section>
+                <section class="section" id="tags">
+                    @foreach( $question->tags as $tag )
+                        <div class="chip">
+                            {{ $tag->name }}
+                        </div>
+                    @endforeach
+                </section>
+            </main>
+        </div>
     </div>
 
     {{-- Answers area --}}
@@ -37,7 +39,7 @@
                 </span>
             </h6>
             {{-- Display all answers --}}
-            @each('question.answers' , $answers, 'answer')
+            @each('question.partials.answers' , $answers, 'answer')
         @else
             <div class="section center-align">
                 <i class="material-icons large">mode_edit</i>
@@ -45,7 +47,7 @@
             </div>
         @endif
         {{-- include answer from --}}
-        @include('question.answerForm')
+        @include('question.partials.answerForm')
     </div>
 @endsection
 

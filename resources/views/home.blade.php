@@ -1,4 +1,4 @@
-@extends('base.master')
+@extends('base.column')
 
 @section('title', 'Pitajte i podijelite svoje znanje')
 
@@ -8,7 +8,7 @@
         <hr>
         @if(count($questions))
             @foreach($questions as $question)
-                @include('question.question')
+                @include('question.partials.question')
             @endforeach
         @else
             <div class="center-align">

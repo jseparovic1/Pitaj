@@ -18,18 +18,11 @@
         </header>
         <main>
             <div class="container">
-                <div class="row">
-                    <div class="col s8 m8 l8">
-                        @yield('content')
-                    </div>
-                    <div class="col s4 m4 l4">
-                        @yield('sidebar')
-                    </div>
-                </div>
+                @yield('container')
             </div>
         </main>
         <footer class="page-footer">
-            @include('partials.footer')
+            @yield('footer')
         </footer>
 
         @include('partials.scripts')
