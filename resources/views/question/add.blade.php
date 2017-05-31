@@ -2,6 +2,7 @@
 @extends('base.full')
 
 @section('title', 'Pitajte i podijelite svoje znanje')
+@section('pageTitle', 'Postavite pitanje koje vas zanima')
 
 @section('content')
     <form id="questionForm">

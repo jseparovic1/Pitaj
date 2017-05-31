@@ -1,6 +1,7 @@
 @extends('base.full')
 
 @section('title', 'Registrirajte se na pitaj.hr')
+@section('pageTitle', 'Registracija')
 
 @section('content')
     <div class="row">

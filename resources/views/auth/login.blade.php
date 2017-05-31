@@ -1,6 +1,7 @@
 @extends('base.full')
 
 @section('title', 'Login')
+@section('pageTitle', 'Prijava')
 
 @section('content')
     <form method="POST" action="{{ route('session.logIn') }}">

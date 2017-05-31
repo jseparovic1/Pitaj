@@ -53,7 +53,14 @@
 
 @section('sidebar')
     <div class="section">
-        <h5 class="side-title">Povezano</h5>
+        <div class="row">
+            <h5 class="side-title">Povezano</h5>
+            <div class="col">
+                @foreach($related as $q)
+                    <a href="{{ route('question.single',['id' => $q->id])  }}"> {{$q->title}} </a>
+                @endforeach
+            </div>
+        </div>
         <div class="section">
             <h5 class="side-title">Statistika</h5>
             <div id="row">

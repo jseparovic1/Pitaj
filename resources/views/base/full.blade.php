@@ -9,6 +9,11 @@ Full page layout (no grid)
 @section('container')
     <div class="row">
         <div class="col s8 offset-s2">
+            <div class="col s12">
+                <div class="section center-align">
+                    <h5> @yield('pageTitle')</h5>
+                </div>
+            </div>
             @yield('content')
         </div>
     </div>
