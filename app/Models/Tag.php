@@ -23,4 +23,18 @@ class Tag extends ModelBase
     {
         return $this->belongsToMany(Question::class, 'question_tag');
     }
+
+    /**
+     * Get tags with most questions
+     *
+     * @param $count
+     * @return mixed
+     */
+    public static function popular($count)
+    {
+        return self::withCount('questions')
+            ->orderBy('questions_count', 'desc')
+            ->take($count)
+            ->get();
+    }
 }
