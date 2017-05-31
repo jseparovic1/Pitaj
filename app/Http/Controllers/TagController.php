@@ -2,9 +2,7 @@
 
 namespace Pitaj\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Pitaj\Models\Tag;
-use Pitaj\Repositories\QuestionsRepository;
 
 class TagController extends Controller
 {

@@ -17,7 +17,7 @@ class ViewComposerServiceProvider extends ServiceProvider
     {
         //get popular tags
         View::composer('question.partials.popularTags', function ($view) {
-            $view->with('popularTags', Tag::popular(5));
+            $view->with('popularTags', Tag::popular(10));
         });
     }
 

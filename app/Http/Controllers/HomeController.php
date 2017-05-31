@@ -37,12 +37,6 @@ class HomeController extends Controller
         //get latest questions with answers
         $questions = $this->questions->latest();
 
-        //popular tags
-        $popularTags = Tag::withCount('questions')
-            ->orderBy('questions_count', 'desc')
-            ->limit($this->tagLimit)
-            ->get();
-
-        return view('home', compact('questions', 'popularTags'));
+        return view('home', compact('questions'));
     }
 }
