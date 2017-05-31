@@ -42,17 +42,20 @@ class QuestionController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'question' => 'required|max:200',
+            'title' => 'required|max:200',
+            'body' => 'string',
             'tags' => 'required'
         ]);
 
         $tags =  $request->input('tags');
-        $title = $request->input('question');
+        $title = $request->input('title');
+        $body = $request->input('body') ?? '';
 
         $tags = json_decode($tags);
 
         //publish question
-        $request->user()->publish($title, $tags);
+        $questionId = $request->user()->publish($title, $body, $tags);
+        return $questionId;
     }
 
     /**

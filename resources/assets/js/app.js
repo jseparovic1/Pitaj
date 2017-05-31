@@ -15,5 +15,6 @@
 $('.chips').material_chip();
 
 $('.chips-placeholder').material_chip({
-    placeholder: '+Upišite tag',
+    placeholder: 'Upisite tag',
+    secondaryPlaceholder: '+Tag'
 });
