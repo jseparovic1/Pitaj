@@ -177,6 +177,8 @@ return [
         Pitaj\Providers\EventServiceProvider::class,
         Pitaj\Providers\RouteServiceProvider::class,
 
+        Pitaj\Providers\ViewComposerServiceProvider::class,
+
         /**
          * Materialize Sass
          */
