@@ -4,21 +4,29 @@ namespace Pitaj\Http\Controllers;
 
 use Pitaj\Models\Question;
 use Pitaj\Models\Tag;
+use Pitaj\Repositories\QuestionsRepository;
 
 class HomeController extends Controller
 {
-    /**
-     * Defines how many questions are shown on front page
-     *
-     * @var int
-     */
-    protected $questionLimit = 10;
-
     /**
      * Number of tags show on front page
      * @var int
      */
     protected $tagLimit = 5;
+
+    /**
+     * @var QuestionsRepository
+     */
+    protected $questions;
+
+    /**
+     * HomeController constructor.
+     * @param QuestionsRepository $questions
+     */
+    public function __construct(QuestionsRepository $questions)
+    {
+        $this->questions = $questions;
+    }
 
     /**
      * Show questions and tags
@@ -27,11 +35,7 @@ class HomeController extends Controller
     public function index()
     {
         //get latest questions with answers
-        $questions = Question::with('answers')
-            ->with('tags')
-            ->latest()
-            ->take($this->questionLimit)
-            ->get();
+        $questions = $this->questions->latest();
 
         //popular tags
         $popularTags = Tag::withCount('questions')
