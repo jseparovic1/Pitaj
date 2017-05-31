@@ -21,8 +21,10 @@
                 </section>
                 <section class="section" id="tags">
                     @foreach( $question->tags as $tag )
-                        <div class="chip">
-                            {{ $tag->name }}
+                        <div class="chip chipTag">
+                            <a href="{{ route('tag.show', ['tag' => $tag->name]) }}">
+                                {{ $tag->name }}
+                            </a>
                         </div>
                     @endforeach
                 </section>
@@ -61,12 +63,12 @@
                 @endforeach
             </div>
         </div>
-        <div class="section">
+    </div>
+    <div class="section">
+        <div id="row">
             <h5 class="side-title">Statistika</h5>
-            <div id="row">
-                <div class="col">
-                    <span> <i class="tiny material-icons">visibility</i> <span>{{ $question->views }}</span></span>
-                </div>
+            <div class="col">
+                <span> <i class="tiny material-icons">visibility</i> <span>{{ $question->views }}</span></span>
             </div>
         </div>
     </div>
