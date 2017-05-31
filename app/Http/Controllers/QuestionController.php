@@ -5,16 +5,24 @@ namespace Pitaj\Http\Controllers;
 use Illuminate\Http\Request;
 use Pitaj\Models\Question;
 use Pitaj\Models\Tag;
+use Pitaj\Repositories\QuestionsRepository;
 
 class QuestionController extends Controller
 {
     /**
-     * QuestionController constructor.
+     * @var QuestionsRepository
      */
-    public function __construct()
+    protected $questionsRepository;
+
+    /**
+     * QuestionController constructor.
+     * @param QuestionsRepository $questionsRepository
+     */
+    public function __construct(QuestionsRepository $questionsRepository)
     {
         //set auth middleware so only authenticated user can access this page
         $this->middleware('auth')->except('show');
+        $this->questionsRepository = $questionsRepository;
     }
 
     /**
@@ -41,7 +49,6 @@ class QuestionController extends Controller
         $tags =  $request->input('tags');
         $title = $request->input('question');
 
-        //TODO set json content type when sending ajax and avoid this
         $tags = json_decode($tags);
 
         //publish question
@@ -59,6 +66,9 @@ class QuestionController extends Controller
     {
         $question = Question::findOrFail($id);
 
+        //get related questions
+        $related = $this->questionsRepository->getRelated($question);
+
         //question is hit so increase its views
         $question->views++;
         $question->save();
@@ -71,6 +81,6 @@ class QuestionController extends Controller
             ]);
         }
 
-        return view('question.show' , compact('question'));
+        return view('question.show' , compact('question', 'related'));
     }
 }

@@ -36,6 +36,9 @@ Route::group(['namespace' => 'Auth'], function () {
 /**
  * Question stuff
  */
+//show questions with given tag
+Route::get('/pitanja/tag/{tag}', 'TagController@show')->name('tag.show');
+
 Route::get('/pitaj', 'QuestionController@showForm')->name('question.askForm');
 Route::post('/pitaj', 'QuestionController@store')->name('question.store');
 Route::get('/pitanja/{id}/{slug?}', 'QuestionController@show')->name('question.single');
@@ -43,6 +46,7 @@ Route::get('/pitanja/{id}/{slug?}', 'QuestionController@show')->name('question.s
 Route::post('/pitanja/{id}/', 'AnswerController@store')->name('question.answer');
 Route::get('/up/{answerId}', 'AnswerController@up')->name('answer.up');
 Route::get('/down/{answerId}', 'AnswerController@down')->name('answer.down');
+
 
 
 
