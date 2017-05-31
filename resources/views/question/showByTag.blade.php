@@ -1,10 +1,10 @@
 @extends('base.column')
 
-@section('title', 'Pitajte i podijelite svoje znanje')
+@section('title', "Najnovija $tagName pitanja")
 
 @section('content')
     <div class="section">
-        <h5 class="sectionTitle">Aktualno</h5>
+        <h5 class="sectionTitle">Pitanja sa {{ $tagName }} tagom</h5>
         <hr>
         @if(count($questions))
             @foreach($questions as $question)
@@ -13,7 +13,7 @@
         @else
             <div class="center-align">
                 <i class="material-icons large">code</i>
-                <h6>Još nema pitanja</h6>
+                <h6>Pitanja sa {{ $tagName}} ne postoje!</h6>
             </div>
         @endif
     </div>

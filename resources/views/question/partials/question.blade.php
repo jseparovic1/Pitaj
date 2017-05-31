@@ -12,8 +12,10 @@
     <div class="row" id="tags">
         <div class="col s12">
             @foreach( $question->tags as $tag )
-                <div class="chip">
-                    {{ $tag->name }}
+                <div class="chip chipTag">
+                    <a href="{{ route('tag.show', ['tag' => $tag->name]) }}">
+                        {{ $tag->name }}
+                    </a>
                 </div>
             @endforeach
         </div>
