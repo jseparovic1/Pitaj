@@ -9,14 +9,25 @@
         <input id="token" type="hidden" name="_token" value="{{ csrf_token() }}">
         <div class="row">
             <div class="input-field col s12">
-                <input id="question" type="text" data-length="200" name="question" class="validate">
-                <label for="question" data-error="Max 200 znakova" data-success="Dobro pitanje">Vaše pitanje</label>
+                <input id="questionTitle" type="text" name="questionTitle" class="validate">
+                <label for="questionTitle" data-error="Polje je obavezno" data-success="Dobro pitanje">Vaše pitanje</label>
             </div>
         </div>
         <div class="row">
-            <label>Dodajte tagove</label>
-            <div class="col s12">
-                <div class="chips chips-placeholder"></div>
+            <div class="input-field col s12">
+                <textarea type="textarea" id="questionBody" name="questionBody"
+                          class="materialize-textarea"
+                          data-length="600"
+                          placeholder="Detaljnije opišite vaše pitanje ukoliko je to potrebno"></textarea>
+                <label for="questionBody" data-success="Dobro pitanje">Dodatno objašnjenje</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field">
+                <div class="col s12">
+                    <label>Tagirajte pitanje</label>
+                    <div class="chips chips-placeholder"></div>
+                </div>
             </div>
         </div>
         <input id="tags" type="hidden" value="" name="tags">
@@ -30,24 +41,28 @@
     <script>
         function onQuestionSubmit() {
             let token = $('#token').val();
-            let question = $('#question');
-            let questionVal = question.val();
+            let titleDiv = $('#questionTitle');
+
+            let title = titleDiv.val();
+            let body = $('#questionBody').val();
+
+            console.log(title,body);
 
             chips = $('.chips').material_chip('data');
 
-            if (questionVal === '' || chips.length < 1) {
-                $('label[for="question"]').attr('data-error', 'Polje je obavezno');
-                question.removeClass("valid");
-                question.addClass("invalid");
+            if (title === '' || chips.length < 1) {
+                $('label[for="questionBody"]').attr('data-error', 'Polje je obavezno');
+                titleDiv.removeClass("valid");
+                titleDiv.addClass("invalid");
             } else {
                 chips = JSON.stringify(chips);
                 $.post('/pitaj', {
-                    question : questionVal,
+                    title : title,
+                    body : body,
                     tags : chips,
                     _token : token
-                }).done(function (data) {
-                    console.log(data);
-                    window.location.href = "/";
+                }).done(function (questionId) {
+                    window.location.href = "/pitanja/" + questionId;
                 });
             }
         }

@@ -51,12 +51,15 @@ class User extends Authenticatable
      * Publish new question with given tags
      *
      * @param $title
+     * @param $body
      * @param $tags Tag
+     * @return question id
      */
-    public function publish($title, $tags)
+    public function publish($title, $body, $tags)
     {
         $question = $this->questions()->create([
             'title' => $title,
+            'body' => $body,
             'slug' => str_slug($title)
         ]);
 
@@ -64,5 +67,7 @@ class User extends Authenticatable
             $tag = Tag::firstOrCreate(['name' => $tag->tag]);
             $question->tags()->attach($tag);
         }
+
+        return $question->id;
     }
 }

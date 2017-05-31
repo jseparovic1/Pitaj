@@ -17,7 +17,7 @@
             </header>
             <main id="questionContent">
                 <section>
-                    <p>Question body text here</p>
+                    <p>{{ $question->body }}</p>
                 </section>
                 <section class="section" id="tags">
                     @foreach( $question->tags as $tag )
