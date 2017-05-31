@@ -20,5 +20,5 @@
 @endsection
 
 @section('sidebar')
-
+    @include('question.partials.popularTags')
 @endsection
