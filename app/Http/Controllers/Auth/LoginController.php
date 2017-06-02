@@ -4,8 +4,11 @@ namespace Pitaj\Http\Controllers\Auth;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
+use Laravel\Socialite\Facades\Socialite;
 use Pitaj\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Pitaj\Models\User;
 
 class LoginController extends Controller
 {
@@ -96,4 +99,41 @@ class LoginController extends Controller
 
         return redirect()->route('home');
     }
+
+    /**
+     * Redirect user to facebook login provider
+     *
+     * @return mixed
+     */
+    public function redirectToProvider()
+    {
+        return Socialite::driver('facebook')
+            ->redirect();
+    }
+
+    /**
+     * Get information from facebook
+     *
+     */
+    public function handleProviderCallback()
+    {
+        $user = Socialite::driver('facebook')->user();
+
+        $userLocal = User::where(['social_id' => $user->id])->get()->first();
+
+        //if we didnt fond user we will register him here
+        if (! $userLocal) {
+            $userLocal = User::create([
+                'name' => $user->name,
+                'email' => $user->email,
+                'social_id' => $user->id,
+                'avatarUrl' => $user->avatar,
+                'activated' => 1
+            ]);
+        }
+        Auth::login($userLocal);
+
+        return redirect()->route('home');
+    }
+
 }
