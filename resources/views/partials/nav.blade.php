@@ -7,7 +7,9 @@
                     <ul id="nav-mobile" class="right hide-on-med-and-down">
                         <li><a href="{{ route('question.askForm') }}">Postavi pitanje</a></li>
                         @if( Auth::check() )
-                            <li><a href="">Profil</a></li>
+                            <li class="collection-item avatar">
+                               <img class="circle" src="{{ Auth::user()->avatarUrl }}"/>
+                            </li>
                             <li><a href="{{ route('session.logOut') }}">Odjava</a></li>
                         @else
                             <li><a href="{{ route('session.loginForm') }}">Prijava</a></li>
