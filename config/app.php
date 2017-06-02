@@ -167,6 +167,7 @@ return [
          * Package Service Providers...
          */
         Laravel\Tinker\TinkerServiceProvider::class,
+        Laravel\Socialite\SocialiteServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -237,7 +238,7 @@ return [
          * Aliasses for custom classes
          */
         'MaterializeSass' => Qntm\LaravelMaterializeSass\MaterializeSassBuilder::class,
-
+        'Socialite' => Laravel\Socialite\Facades\Socialite::class,
     ],
 
 ];
