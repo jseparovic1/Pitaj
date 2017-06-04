@@ -23,6 +23,29 @@
         <div class="row ">
            @include('partials.errors')
         </div>
-        <button type="submit" class="btn waves-effect waves-light col s6 offset-s3">Log in</button>
+        <div class="row">
+            <div class="input-field">
+                <button type="submit" class="btn waves-effect waves-light col s6 offset-s3">Log in</button>
+            </div>
+        </div>
+        <div class="row center-align">
+            <div>Ili</div>
+        </div>
+        <div class="divider"></div>
+        <div class="section">
+            <div class="row center-align">
+                <div class="col s12">
+                    <a href="{{ route('login_fb',['provider' => 'facebook']) }}" class="btn s12" style="background-color: mediumblue"> Log in with facebook</a>
+                </div>
+            </div>
+            <div class="row center-align">
+                <div>or</div>
+            </div>
+            <div class="row center-align">
+                <div class="col s12">
+                    <a href="{{ route('login_fb',['provider' => 'google']) }}" class="btn s12" style="background-color :red"> Log in with google+</a>
+                </div>
+            </div>
+        </div>
     </form>
 @endsection

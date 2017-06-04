@@ -7,8 +7,21 @@
                     <ul id="nav-mobile" class="right hide-on-med-and-down">
                         <li><a href="{{ route('question.askForm') }}">Postavi pitanje</a></li>
                         @if( Auth::check() )
-                            <li><a href="">Profil</a></li>
-                            <li><a href="{{ route('session.logOut') }}">Odjava</a></li>
+                            <li>
+                                <a class='dropdown-button'
+                                   href='#'
+                                   data-activates='user-actions'
+                                   below-origin="true"
+                                   hover="true"
+                                >
+                                    <img id="nav-avatar" src="{{ Auth::user()->avatarUrl }}"/>
+                                    <span>{{ Auth::user()->name }}</span>
+                                </a>
+                            </li>
+
+                            <ul id='user-actions' class='dropdown-content'>
+                                <li><a href="{{ route('session.logOut') }}">Odjava</a></li>
+                            </ul>
                         @else
                             <li><a href="{{ route('session.loginForm') }}">Prijava</a></li>
                             <li><a href="{{ route('register.showForm') }}">Registracija</a></li>
