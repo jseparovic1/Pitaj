@@ -8,13 +8,9 @@
         <form class="col s12" method="POST" action="{{ route('register.create') }}">
             {{ csrf_field() }}
             <div class="row">
-                <div class="input-field col s6">
-                    <input id="firstName" type="text" class="validate" name="firstName" value="{{ old('firstName') }}">
-                    <label for="firstName">Ime </label>
-                </div>
-                <div class="input-field col s6">
-                    <input id="lastName" type="text" class="validate" name="lastName" value="{{ old('lastName') }}">
-                    <label for="lastName">Prezime</label>
+                <div class="input-field col s12">
+                    <input id="name" type="text" class="validate" name="name" value="{{ old('name') }}">
+                    <label for="name">Ime za prikaz</label>
                 </div>
             </div>
             <div class="row">

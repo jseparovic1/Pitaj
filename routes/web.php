@@ -32,9 +32,9 @@ Route::group(['namespace' => 'Auth'], function () {
     Route::post('/login', 'LoginController@login')->name('session.logIn');
     Route::get('/logout', 'LoginController@logout')->name('session.logOut');
 
-    //facebook login
-    Route::get('login/facebook', 'LoginController@redirectToProvider')->name('login_fb');
-    Route::get('login/facebook/callback', 'LoginController@handleProviderCallback')->name('login_fb_cb');
+    //oAuth login login
+    Route::get('login/{provider}', 'LoginController@redirectToProvider')->name('login_fb');
+    Route::get('login/{provider}/callback', 'LoginController@handleProviderCallback')->name('login_fb_cb');
 });
 
 /**
