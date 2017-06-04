@@ -105,9 +105,9 @@ class LoginController extends Controller
      *
      * @return mixed
      */
-    public function redirectToProvider()
+    public function redirectToProvider($provider)
     {
-        return Socialite::driver('facebook')
+        return Socialite::driver($provider)
             ->redirect();
     }
 
@@ -115,22 +115,22 @@ class LoginController extends Controller
      * Get information from facebook
      *
      */
-    public function handleProviderCallback()
+    public function handleProviderCallback($provider)
     {
-        $user = Socialite::driver('facebook')->user();
+        $user = Socialite::driver($provider)->user();
 
-        $userLocal = User::where(['social_id' => $user->id])->get()->first();
+        $userLocal = User::where(['email' => $user->email])->get()->first();
 
         //if we didnt fond user we will register him here
         if (! $userLocal) {
             $userLocal = User::create([
                 'name' => $user->name,
                 'email' => $user->email,
-                'social_id' => $user->id,
                 'avatarUrl' => $user->avatar,
                 'activated' => 1
             ]);
         }
+
         Auth::login($userLocal);
 
         return redirect()->route('home');

@@ -35,7 +35,7 @@
         <div class="section">
             <div class="row center-align">
                 <div class="col s12">
-                    <a href="{{ route('login_fb') }}" class="btn s12" style="background-color: mediumblue"> Log in with facebook</a>
+                    <a href="{{ route('login_fb',['provider' => 'facebook']) }}" class="btn s12" style="background-color: mediumblue"> Log in with facebook</a>
                 </div>
             </div>
             <div class="row center-align">
@@ -43,7 +43,7 @@
             </div>
             <div class="row center-align">
                 <div class="col s12">
-                    <button class="btn s12" style="background-color :red"> Log in with google+</button>
+                    <a href="{{ route('login_fb',['provider' => 'google']) }}" class="btn s12" style="background-color :red"> Log in with google+</a>
                 </div>
             </div>
         </div>
