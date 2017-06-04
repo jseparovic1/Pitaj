@@ -2,18 +2,10 @@
 
 namespace Pitaj\Http\Controllers;
 
-use Pitaj\Models\Question;
-use Pitaj\Models\Tag;
 use Pitaj\Repositories\QuestionsRepository;
 
 class HomeController extends Controller
 {
-    /**
-     * Number of tags show on front page
-     * @var int
-     */
-    protected $tagLimit = 5;
-
     /**
      * @var QuestionsRepository
      */
@@ -37,6 +29,6 @@ class HomeController extends Controller
         //get latest questions with answers
         $questions = $this->questions->latest();
 
-        return view('home', compact('questions'));
+        return view('question.index', compact('questions'));
     }
 }

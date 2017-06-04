@@ -43,7 +43,7 @@ class QuestionController extends Controller
     {
         $this->validate($request, [
             'title' => 'required|max:200',
-            'body' => 'string',
+            'body' => 'string|max:2000',
             'tags' => 'required'
         ]);
 
@@ -85,5 +85,20 @@ class QuestionController extends Controller
         }
 
         return view('question.show' , compact('question', 'related'));
+    }
+
+    /**
+     * Delete question
+     *
+     * @param Question $question
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function destroy(Question $question)
+    {
+        $this->authorize('update', $question);
+        $question->answers()->delete();
+        $question->delete();
+
+        return redirect()->route('home');
     }
 }
