@@ -41,6 +41,7 @@
     <script>
         function onQuestionSubmit() {
             let token = $('#token').val();
+            console.log(token);
             let titleDiv = $('#questionTitle');
 
             let title = titleDiv.val();
