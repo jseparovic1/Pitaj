@@ -6,8 +6,6 @@ use Pitaj\Models\ModelBase;
 
 class Question extends ModelBase
 {
-    //TODO implement created event on question
-
     /**
      * Get all tags associated with question
      */

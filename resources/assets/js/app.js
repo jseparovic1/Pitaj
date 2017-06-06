@@ -4,7 +4,9 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-//require('./bootstrap');
+require('./bootstrap');
+
+window.Vue = require('vue');
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -12,9 +14,14 @@
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+Vue.component('example', require('./components/Example.vue'));
+
+const app = new Vue({
+    el: '#app'
+});
+
 $('.chips').material_chip();
 
 $('.chips-placeholder').material_chip({
-    placeholder: 'Upisite tag',
     secondaryPlaceholder: '+Tag'
 });

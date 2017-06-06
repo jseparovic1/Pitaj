@@ -12,12 +12,13 @@
 
         @include('partials.style')
     </head>
-    <body>
+    <body id="app">
         <header>
             @include('partials.nav')
         </header>
         <main>
             <div class="container">
+                <example></example>
                 @yield('container')
             </div>
         </main>
@@ -25,6 +26,8 @@
             @yield('footer')
         </footer>
 
+        <example></example>
+        <flash message="temp message"></flash>
         @include('partials.scripts')
     </body>
 </html>

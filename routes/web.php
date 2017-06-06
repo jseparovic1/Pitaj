@@ -45,6 +45,7 @@ Route::get('/pitanja/tag/{tag}', 'TagController@show')->name('tag.show');
 
 Route::get('/pitaj', 'QuestionController@showForm')->name('question.askForm');
 Route::post('/pitaj', 'QuestionController@store')->name('question.store');
+Route::delete('/pitanja/{question}/', 'QuestionController@destroy')->name('question.destroy');
 Route::get('/pitanja/{id}/{slug?}', 'QuestionController@show')->name('question.single');
 
 Route::post('/pitanja/{id}/', 'AnswerController@store')->name('question.answer');

@@ -23,7 +23,7 @@
     <div id="row">
         <div class="col s12">
             <span> <i class="tiny material-icons">visibility</i> <span>{{ $question->views }}</span></span>
-            <span> -- {{ count($question->answers) }} Odgovora </span>
+            <span> | {{ count($question->answers) }} Odgovora </span>
         </div>
     </div>
 </div>
