@@ -4,7 +4,6 @@ namespace Pitaj\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Pitaj\Models\Question;
-use Pitaj\Models\Tag;
 use Pitaj\Repositories\QuestionsRepository;
 
 class QuestionController extends Controller

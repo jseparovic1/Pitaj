@@ -5,6 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="keywords" content="pitaj, pitanja , odgovori, znanje, dijeljenje">
+        <meta name="csrf-token" content="{{ csrf_token() }}">
 
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
@@ -12,22 +13,22 @@
 
         @include('partials.style')
     </head>
-    <body id="app">
+    <body>
         <header>
             @include('partials.nav')
         </header>
         <main>
-            <div class="container">
-                <example></example>
-                @yield('container')
+            <div id="app">
+                <div class="container">
+                    @yield('container')
+                </div>
             </div>
         </main>
         <footer class="page-footer">
             @yield('footer')
         </footer>
 
-        <example></example>
-        <flash message="temp message"></flash>
         @include('partials.scripts')
     </body>
 </html>
+
