@@ -4,51 +4,55 @@
 
 {{-- Show single question --}}
 @section('content')
-    <question inline-component>
-        <div class="section">
-            <div class="card-panel">
-                <header class="section" id="questionTitle">
-                    <h5 class="h1"> {{ $question->title }}</h5>
-                    <i>
-                        {{ $question->author->name }}
-                        {{ $question->author->lastName }}
-                        {{ $question->createdForHuman() }}
-                    </i>
-                    <div class="divider"></div>
-                </header>
-                <main id="questionContent">
-                    <section>
-                        <p>{{ $question->body }}</p>
-                    </section>
-                    <section class="section" id="tags">
-                        @foreach( $question->tags as $tag )
-                            <div class="chip chipTag">
-                                <a href="{{ route('tag.show', ['tag' => $tag->name]) }}">
-                                    {{ $tag->name }}
-                                </a>
-                            </div>
-                        @endforeach
-                    </section>
-                    @can('update', $question)
-                        <div class="row" id="question-controls">
-                            <div class="col s3">
-                                <button class="btn-flat" style="float:left" type="submit">
+    <div class="section">
+        <div class="card-panel">
+            <header class="section" id="questionTitle">
+                <h5 class="h1"> {{ $question->title }}</h5>
+                <i>
+                    {{ $question->author->name }}
+                    {{ $question->author->lastName }}
+                    {{ $question->createdForHuman() }}
+                </i>
+                <div class="divider"></div>
+            </header>
+            <main>
+                <section id="questionContent" data-id="{{ $question->id }}">
+                    <p>{{ $question->body }}</p>
+                </section>
+                <div class="input-field col s12">
+                        <textarea id="questionEdit" class="materialize-textarea" style="display: none;">
+                        </textarea>
+                </div>
+                <section class="section" id="tags">
+                    @foreach( $question->tags as $tag )
+                        <div class="chip chipTag">
+                            <a href="{{ route('tag.show', ['tag' => $tag->name]) }}">
+                                {{ $tag->name }}
+                            </a>
+                        </div>
+                    @endforeach
+                </section>
+                @can('update', $question)
+                    <div class="row" id="question-controls">
+                        <div class="section ">
+                            <div class="row">
+                                <button id="btn-edit" class="btn-flat btn-control">
                                     <i class="material-icons">edit</i>
                                 </button>
                                 <form method="POST" action="{{ route('question.destroy',['question' => $question->id ]) }}">
                                     {{ csrf_field() }}
                                     {{ method_field('DELETE') }}
-                                    <button class="btn-flat" type="submit">
+                                    <button id="btn-delete" class="btn-flat" type="submit">
                                         <i class="material-icons">delete</i>
                                     </button>
                                 </form>
                             </div>
                         </div>
-                    @endcan
-                </main>
-            </div>
+                    </div>
+                @endcan
+            </main>
         </div>
-    </question>
+    </div>
 
 
     {{-- Answers area --}}

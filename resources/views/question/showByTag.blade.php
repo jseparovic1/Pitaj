@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="section">
-        <h5 class="sectionTitle">Pitanja sa {{ $tagName }} tagom</h5>
+        <h5 class="sectionTitle">Pitanja sa "{{ $tagName }}" tagom</h5>
         <hr>
         @if(count($questions))
             @foreach($questions as $question)

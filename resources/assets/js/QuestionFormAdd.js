@@ -15,9 +15,9 @@ form.click(function (event) {
 
     chips = $('.chips').material_chip('data');
 
-    console.log("body: " + body);
-    console.log("title: " + title);
-    console.log(chips);
+    // console.log("body: " + body);
+    // console.log("title: " + title);
+    // console.log(chips);
 
     if (title === '' ) {
         $('label[for="questionTitle"]').attr('data-error', 'Polje je obavezno');
