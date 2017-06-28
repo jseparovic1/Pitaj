@@ -11,14 +11,8 @@
 |
 */
 
-/**
- * Home page
- */
 Route::get('/', 'HomeController@index')->name('home');
 
-/**
- * Auth routes
- */
 Route::group(['namespace' => 'Auth'], function () {
     Route::get('/register', 'RegisterController@showForm')->name('register.showForm');
     Route::post('/register', 'RegisterController@register')->name('register.create');
@@ -37,20 +31,25 @@ Route::group(['namespace' => 'Auth'], function () {
     Route::get('login/{provider}/callback', 'LoginController@handleProviderCallback')->name('login_fb_cb');
 });
 
-/**
- * Question stuff
- */
-//show questions with given tag
-Route::get('/pitanja/tag/{tag}', 'TagController@show')->name('tag.show');
 
-Route::get('/pitaj', 'QuestionController@showForm')->name('question.askForm');
-Route::post('/pitaj', 'QuestionController@store')->name('question.store');
-Route::delete('/pitanja/{question}/', 'QuestionController@destroy')->name('question.destroy');
-Route::get('/pitanja/{id}/{slug?}', 'QuestionController@show')->name('question.single');
+Route::group(["namespace" => 'Question'], function () {
+    //show questions with given tag, it needs to bee before /pitanja/{question}
+    Route::get('/pitanja/tag/{tag}/', 'QuestionTagController@show')->name('tag.show');
 
-Route::post('/pitanja/{id}/', 'AnswerController@store')->name('question.answer');
-Route::get('/up/{answerId}', 'AnswerController@up')->name('answer.up');
-Route::get('/down/{answerId}', 'AnswerController@down')->name('answer.down');
+    Route::get('/pitaj', 'QuestionController@create')->name('question.askForm');
+    Route::post('/pitaj', 'QuestionController@store')->name('question.store');
+    Route::post('/pitanja/edit/{id}/', 'QuestionController@update')->name('question.edit');
+    Route::delete('/pitanja/{question}/', 'QuestionController@destroy')->name('question.destroy');
+    Route::get('/pitanja/{id}/{slug?}', 'QuestionController@show')->name('question.single');
+});
+
+Route::group(["namespace" => 'Answer'], function () {
+    Route::post('/pitanja/{id}/', 'AnswerController@store')->name('question.answer');
+    Route::get('/up/{answerId}', 'AnswerController@up')->name('answer.up');
+    Route::get('/down/{answerId}', 'AnswerController@down')->name('answer.down');
+});
+
+
 
 
 

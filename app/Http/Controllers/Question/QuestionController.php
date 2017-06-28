@@ -1,8 +1,9 @@
 <?php
 
-namespace Pitaj\Http\Controllers;
+namespace Pitaj\Http\Controllers\Question;
 
 use Illuminate\Http\Request;
+use Pitaj\Http\Controllers\Controller;
 use Pitaj\Models\Question;
 use Pitaj\Repositories\QuestionsRepository;
 
@@ -26,9 +27,10 @@ class QuestionController extends Controller
 
     /**
      * Show question form
+     *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function showForm()
+    public function create()
     {
         return view('question.add');
     }
@@ -84,6 +86,21 @@ class QuestionController extends Controller
         }
 
         return view('question.show' , compact('question', 'related'));
+    }
+
+    /**
+     * Update given question
+     *
+     * @param $id
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function update($id, Request $request)
+    {
+        $body = $request->get('body');
+        Question::where('id', $id)->update(['body' => $body]);
+
+        return response()->json("success");
     }
 
     /**

@@ -1,10 +1,11 @@
 <?php
 
-namespace Pitaj\Http\Controllers;
+namespace Pitaj\Http\Controllers\Question;
 
 use Pitaj\Models\Tag;
+use Pitaj\Http\Controllers\Controller;
 
-class TagController extends Controller
+class QuestionTagController extends Controller
 {
     /**
      * Show questions by tag name.

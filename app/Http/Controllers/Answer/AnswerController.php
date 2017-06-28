@@ -1,8 +1,9 @@
 <?php
 
-namespace Pitaj\Http\Controllers;
+namespace Pitaj\Http\Controllers\Answer;
 
 use Illuminate\Http\Request;
+use Pitaj\Http\Controllers\Controller;
 use Pitaj\Models\Answer;
 use Pitaj\Models\Question;
 
