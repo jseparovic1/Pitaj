@@ -38,7 +38,9 @@ Route::group(["namespace" => 'Question'], function () {
 
     Route::get('/pitaj', 'QuestionController@create')->name('question.askForm');
     Route::post('/pitaj', 'QuestionController@store')->name('question.store');
-    Route::post('/pitanja/edit/{id}/', 'QuestionController@update')->name('question.edit');
+    Route::get('/pitanja/edit/{question}/{slug}', 'QuestionController@edit')->name('question.editForm');
+
+    Route::post('/pitanja/edit/{id}/', 'QuestionController@update')->name('question.update');
     Route::delete('/pitanja/{question}/', 'QuestionController@destroy')->name('question.destroy');
     Route::get('/pitanja/{id}/{slug?}', 'QuestionController@show')->name('question.single');
 });

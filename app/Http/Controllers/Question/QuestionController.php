@@ -89,18 +89,39 @@ class QuestionController extends Controller
     }
 
     /**
+     * Show edit form
+     * @param Question $question
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function edit(Question $question)
+    {
+        $this->authorize('update', $question);
+        return view('question.edit', compact('question'));
+    }
+
+    /**
      * Update given question
-     *
      * @param $id
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
      */
     public function update($id, Request $request)
     {
-        $body = $request->get('body');
-        Question::where('id', $id)->update(['body' => $body]);
+        $question = Question::findOrFail($id);
+        $this->authorize('update', $question);
 
-        return response()->json("success");
+        $body = $request->get('body');
+        $title = $request->get('title') ?? $question->title;
+        Question::where('id', $id)->update([
+            'body' => $body,
+            'title' => $title
+        ]);
+
+        if ($request->isXmlHttpRequest()) {
+            return response()->json("success");
+        }
+
+        return redirect()->route('question.single', ['id' => $question->id]);
     }
 
     /**

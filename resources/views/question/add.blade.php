@@ -5,7 +5,9 @@
 @section('pageTitle', 'Postavite pitanje koje vas zanima')
 
 @section('content')
-    <form id="questionForm">
+<div class="section">
+    <div class="card-panel">
+        <form id="questionForm">
         <input id="token" type="hidden" name="_token" value="{{ csrf_token() }}">
         <div class="row">
             <div class="input-field col s12">
@@ -37,5 +39,7 @@
             </button>
         </div>
     </form>
+    </div>
+</div>
 @overwrite
 
