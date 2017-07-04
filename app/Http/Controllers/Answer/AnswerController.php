@@ -13,7 +13,7 @@ class AnswerController extends Controller
      * Add new answer to question
      *
      * @param Request $request
-     * @param $id question id
+     * @param $id
      * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request, $id)
@@ -35,7 +35,7 @@ class AnswerController extends Controller
     /**
      * Up vote given answer
      *
-     * @param $id Answer id
+     * @param $id
      * @return \Illuminate\Http\RedirectResponse
      */
     public function up($id)

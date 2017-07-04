@@ -5,6 +5,33 @@ namespace Pitaj\Models;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
+/**
+ * Pitaj\Models\User
+ *
+ * @property int $id
+ * @property string $email
+ * @property string $password
+ * @property string $name
+ * @property bool $activated
+ * @property string $avatarUrl
+ * @property string $remember_token
+ * @property \Carbon\Carbon $created_at
+ * @property \Carbon\Carbon $updated_at
+ * @property-read \Pitaj\Models\Activation $activation
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Pitaj\Models\Answer[] $answers
+ * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Pitaj\Models\Question[] $questions
+ * @method static \Illuminate\Database\Query\Builder|\Pitaj\Models\User whereActivated($value)
+ * @method static \Illuminate\Database\Query\Builder|\Pitaj\Models\User whereAvatarUrl($value)
+ * @method static \Illuminate\Database\Query\Builder|\Pitaj\Models\User whereCreatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|\Pitaj\Models\User whereEmail($value)
+ * @method static \Illuminate\Database\Query\Builder|\Pitaj\Models\User whereId($value)
+ * @method static \Illuminate\Database\Query\Builder|\Pitaj\Models\User whereName($value)
+ * @method static \Illuminate\Database\Query\Builder|\Pitaj\Models\User wherePassword($value)
+ * @method static \Illuminate\Database\Query\Builder|\Pitaj\Models\User whereRememberToken($value)
+ * @method static \Illuminate\Database\Query\Builder|\Pitaj\Models\User whereUpdatedAt($value)
+ * @mixin \Eloquent
+ */
 class User extends Authenticatable
 {
     use Notifiable;

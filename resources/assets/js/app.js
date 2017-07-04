@@ -8,3 +8,7 @@ require('./bootstrap');
 //load project js
 require('./QuestionFormAdd');
 require('./QuestionEdit');
+
+$( document ).ready(function(){
+    $(".button-collapse").sideNav();
+});
