@@ -17,7 +17,7 @@
             </header>
             <main>
                 <section id="questionContent" data-id="{{ $question->id }}">
-                    <p>{{ $question->body }}</p>
+                    <p>{!! $question->body !!}</p>
                 </section>
                 <div class="input-field col s12">
                     <textarea id="questionEdit" class="materialize-textarea" style="display: none;"></textarea>

@@ -5,13 +5,11 @@ $('.chips-placeholder').material_chip({
 });
 
 let form = $('#questionFormSubmit');
-form.click(function (event) {
+form.click(function () {
     let titleDiv = $('#questionTitle');
-    let bodyDiv = $('#questionBody');
     let chipsDiv = $('#chipsError');
-
     let title = titleDiv.val();
-    let body = $('#questionBody').val();
+    let body = tinymce.activeEditor.getContent({format : 'raw'});
 
     chips = $('.chips').material_chip('data');
 

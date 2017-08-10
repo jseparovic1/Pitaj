@@ -16,12 +16,9 @@
             </div>
         </div>
         <div class="row">
+            <span for="questionTitle">Dodatni opis</span>
             <div class="input-field col s12">
-                <label for="questionTitle" data-error="Polje je obavezno" data-success="Dobar opis">Dodatan opis</label>
-                <textarea type="textarea" id="questionBody" name="questionBody"
-                          class="materialize-textarea validate"
-                          data-length="2000">
-                </textarea>
+                <textarea type="textarea" id="questionBody" name="questionBody" data-length="2000"></textarea>
             </div>
         </div>
         <div class="row">
