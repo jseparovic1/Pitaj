@@ -1,7 +1,7 @@
 <div class="card-panel z-depth-1 lighten-5">
     <i>
         <i class="tiny material-icons">person_pin</i>
-        {{ $question->author()->first()->name }} on
+        {{ $question->author()->first()->name }}
         {{ $question->createdForHuman() }}
     </i>
     <blockquote>

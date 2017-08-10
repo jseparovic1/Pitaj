@@ -7,7 +7,7 @@
     <div class="section">
         <div class="card-panel">
             <header class="section" id="questionTitle">
-                <h5 class="h1"> {{ $question->title }}</h5>
+                <h5  style="max-width: 600px;word-break: break-word">{{ $question->title }}</h5>
                 <i>
                     {{ $question->author->name }}
                     {{ $question->author->lastName }}
@@ -20,7 +20,7 @@
                     <p>{{ $question->body }}</p>
                 </section>
                 <div class="input-field col s12">
-                        <textarea id="questionEdit" class="materialize-textarea" style="display: none;"></textarea>
+                    <textarea id="questionEdit" class="materialize-textarea" style="display: none;"></textarea>
                 </div>
                 <section class="section" id="tags">
                     @foreach( $question->tags as $tag )
@@ -73,7 +73,9 @@
             <h5 class="side-title">Povezano</h5>
             <div class="col">
                 @foreach($related as $q)
-                    <a href="{{ route('question.single',['id' => $q->id])  }}"> {{$q->title}} </a>
+                    <ul class="collection">
+                        <li class="collection-item" style="max-width: 300px;word-break: break-word">{{ $q->title }}</li>
+                    </ul>
                 @endforeach
             </div>
         </div>
