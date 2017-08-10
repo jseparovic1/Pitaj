@@ -32,9 +32,8 @@ class VoteController extends Controller
         }
 
         $user = Auth::user();
-        $vote = $user->hasVoted($answer);
+        $vote = $user->getVote($answer);
 
-        //user did not vote already
         if ($vote instanceof Vote) {
             $vote->delete();
         }

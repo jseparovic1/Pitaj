@@ -71,26 +71,10 @@ class User extends Authenticatable
     }
 
     /**
-     * Return vote if user has voted to answer
-     *
-     * @param $answer
-     * @return mixed
-     */
-    public function hasVoted($answer)
-    {
-        return $this->votes()->where([
-            'voter_id' => $this->id,
-            'answer_id' => $answer->id
-        ])->first();
-    }
-
-    /**
      * Activate user
      */
     public function activate()
     {
-        //We can acces properties of model and his relationship
-        //with dynamic properties
         $this->activated = 1;
         $this->activation->token = '';
         $this->save();
@@ -120,6 +104,13 @@ class User extends Authenticatable
         return $question->id;
     }
 
+    /**
+     * Vote for answer
+     *
+     * @param $answer
+     * @param string $type
+     * @return \Illuminate\Database\Eloquent\Model
+     */
     public function vote($answer, $type = 'up')
     {
         if ($type == 'up') {
@@ -133,5 +124,34 @@ class User extends Authenticatable
             'answer_id' => $answer->id,
             'vote_value' => -1,
         ]);
+    }
+
+    /**
+     * Return vote if user has voted to answer
+     *
+     * @param $answer
+     * @return mixed
+     */
+    public function getVote($answer)
+    {
+        return $this->votes()->where([
+            'voter_id' => $this->id,
+            'answer_id' => $answer->id
+        ])->first();
+    }
+
+    public function hasVoted($answer, $type)
+    {
+        $vote = $this->getVote($answer);
+        if (! $vote instanceof Vote) {
+            return false;
+        }
+        if ($vote->vote_value === 1 && $type === "up") {
+            return true;
+        }
+        if ($vote->vote_value === -1 && $type === "down") {
+            return true;
+        }
+        return false;
     }
 }

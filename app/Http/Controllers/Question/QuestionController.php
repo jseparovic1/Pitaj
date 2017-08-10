@@ -5,6 +5,7 @@ namespace Pitaj\Http\Controllers\Question;
 use Illuminate\Http\Request;
 use Pitaj\Http\Controllers\Controller;
 use Pitaj\Models\Question;
+use Pitaj\Query\QuestionsQuery;
 use Pitaj\Repositories\QuestionsRepository;
 
 class QuestionController extends Controller
@@ -15,14 +16,20 @@ class QuestionController extends Controller
     protected $questionsRepository;
 
     /**
+     * @var QuestionsQuery
+     */
+    private $questionsQuery;
+
+    /**
      * QuestionController constructor.
      * @param QuestionsRepository $questionsRepository
      */
-    public function __construct(QuestionsRepository $questionsRepository)
+    public function __construct(QuestionsRepository $questionsRepository, QuestionsQuery $questionsQuery)
     {
         //set auth middleware so only authenticated user can access this page
         $this->middleware('auth')->except('show');
         $this->questionsRepository = $questionsRepository;
+        $this->questionsQuery = $questionsQuery;
     }
 
     /**
@@ -68,9 +75,9 @@ class QuestionController extends Controller
      */
     public function show($id, $slug = null)
     {
-        $question = Question::findOrFail($id);
+        $question = $this->questionsQuery->findById($id);
 
-        //get related questions
+        //get related questions d
         $related = $this->questionsRepository->getRelated($question);
 
         //question is hit so increase its views

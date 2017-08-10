@@ -20,8 +20,7 @@
                     <p>{{ $question->body }}</p>
                 </section>
                 <div class="input-field col s12">
-                        <textarea id="questionEdit" class="materialize-textarea" style="display: none;">
-                        </textarea>
+                        <textarea id="questionEdit" class="materialize-textarea" style="display: none;"></textarea>
                 </div>
                 <section class="section" id="tags">
                     @foreach( $question->tags as $tag )
@@ -53,17 +52,10 @@
             </main>
         </div>
     </div>
-
-
     {{-- Answers area --}}
     <div class="section" id="answers">
         @if(count($answers = $question->answers->sortByDesc('score')) > 0)
-            <h6>Komentara
-                <span style="color:red; font-weight: 600">
-                    {{ count($answers) }}
-                </span>
-            </h6>
-             Display all answers
+            <h6>Komentara <span style="color:red; font-weight: 600">{{ count($answers) }}</span></h6>
             @each('answer.answers' , $answers, 'answer')
         @else
             <div class="section center-align">
@@ -71,7 +63,6 @@
                 <h5>Još nema odgovora</h5>
             </div>
         @endif
-         include answer from
         @include('answer.answerForm')
     </div>
 @endsection

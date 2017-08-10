@@ -55,7 +55,7 @@ class QuestionsRepository
      * Find related questions for given question
      *
      * @param Question $source
-     * @return
+     * @return \Illuminate\Database\Eloquent\Collection|static[]
      */
     public function getRelated(Question $source)
     {

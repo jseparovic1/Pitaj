@@ -51,6 +51,10 @@ class Answer extends ModelBase
         return $this->hasMany(Vote::class, 'answer_id');
     }
 
+    /**
+     * Calculate vote score
+     * @return mixed
+     */
     public function getScoreAttribute()
     {
         return $this->votes->sum('vote_value');
