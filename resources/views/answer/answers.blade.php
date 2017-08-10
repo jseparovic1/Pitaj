@@ -10,27 +10,21 @@
         <div class="col s2 center-align">
             <div class="section">
                 <div id="upVote">
-                    <a href="{{ route('answer.up', ['id' => $answer->id])}}"
-                       class="material-icons">
-                        thumb_up
-                    </a>
+                    <a href="{{ route('answer.vote', ['id' => $answer->id, 'action' => 'up'])}}"
+                       class="material-icons">thumb_up</a>
                 </div>
                 <div id="votes">
-                    <span class="votesNumber">{{ $answer->votes }}</span>
+                    <span class="votesNumber">{{ $answer->votes->sum('vote_value') }}</span>
                 </div>
                 <div id="downVote">
-                    <a href="{{ route('answer.down', ['id' => $answer->id] )}}"
-                       class="material-icons">
-                        thumb_down
-                    </a>
+                    <a href="{{ route('answer.vote', ['id' => $answer->id, 'action' => 'down'] )}}"
+                       class="material-icons"> thumb_down</a>
                 </div>
             </div>
         </div>
         <div class="col s12">
-            <div class="section" id="questionTitle">
-                <h6> {{ $answer->author->name }} {{ $answer->author->lastName }} ,
-                    <i>Napravia cuda 91</i>
-                </h6>
+            <div id="questionTitle">
+                <i>{{ $answer->author->name }} {{ $answer->author->lastName }}</i>
             </div>
         </div>
     </div>

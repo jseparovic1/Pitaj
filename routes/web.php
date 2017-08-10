@@ -47,15 +47,8 @@ Route::group(["namespace" => 'Question'], function () {
 
 Route::group(["namespace" => 'Answer'], function () {
     Route::post('/pitanja/{id}/', 'AnswerController@store')->name('question.answer');
-    Route::get('/up/{answerId}', 'AnswerController@up')->name('answer.up');
-    Route::get('/down/{answerId}', 'AnswerController@down')->name('answer.down');
+    Route::get('/vote/{answer}/{action}', 'VoteController@vote')->name('answer.vote');
 });
-
-
-
-
-
-
 
 
 

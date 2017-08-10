@@ -42,7 +42,7 @@
                                 <form method="POST" action="{{ route('question.destroy',['question' => $question->id ]) }}">
                                     {{ csrf_field() }}
                                     {{ method_field('DELETE') }}
-                                    <button id="btn-delete" class="btn-flat" type="submit">
+                                    <button id="btn-delete" class="btn-flat">
                                         <i class="material-icons">delete</i>
                                     </button>
                                 </form>
@@ -57,13 +57,13 @@
 
     {{-- Answers area --}}
     <div class="section" id="answers">
-        @if(count($answers = $question->answers->sortBy('votes', 1 , true)) > 0)
+        @if(count($answers = $question->answers->sortByDesc('score')) > 0)
             <h6>Komentara
                 <span style="color:red; font-weight: 600">
                     {{ count($answers) }}
                 </span>
             </h6>
-            {{-- Display all answers --}}
+             Display all answers
             @each('answer.answers' , $answers, 'answer')
         @else
             <div class="section center-align">
@@ -71,7 +71,7 @@
                 <h5>Još nema odgovora</h5>
             </div>
         @endif
-        {{-- include answer from --}}
+         include answer from
         @include('answer.answerForm')
     </div>
 @endsection

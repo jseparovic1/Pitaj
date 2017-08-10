@@ -31,32 +31,4 @@ class AnswerController extends Controller
 
         return back();
     }
-
-    /**
-     * Up vote given answer
-     *
-     * @param $id
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function up($id)
-    {
-        $answer = Answer::findOrFail($id);
-        $answer->votes++;
-        $answer->save();
-        return back();
-    }
-
-    /**
-     * Down vote given answer
-     *
-     * @param $id Answer id
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function down($id)
-    {
-        $answer = Answer::findOrFail($id);
-        $answer->votes--;
-        $answer->save();
-        return back();
-    }
 }

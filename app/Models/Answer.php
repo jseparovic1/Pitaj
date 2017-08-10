@@ -25,6 +25,8 @@ namespace Pitaj\Models;
  */
 class Answer extends ModelBase
 {
+    protected $appends = ['score'];
+
     /**
      * Get question on witch answer is posted
      */
@@ -39,5 +41,18 @@ class Answer extends ModelBase
     public function author()
     {
         return $this->belongsTo(User::class, 'author_id', 'id');
+    }
+
+    /**
+     * Get answer votes
+     */
+    public function votes()
+    {
+        return $this->hasMany(Vote::class, 'answer_id');
+    }
+
+    public function getScoreAttribute()
+    {
+        return $this->votes->sum('vote_value');
     }
 }

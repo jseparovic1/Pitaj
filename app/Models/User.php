@@ -63,6 +63,28 @@ class User extends Authenticatable
     }
 
     /**
+     * Get all votes
+     */
+    public function votes()
+    {
+        return $this->hasMany(Vote::class, 'voter_id');
+    }
+
+    /**
+     * Return vote if user has voted to answer
+     *
+     * @param $answer
+     * @return mixed
+     */
+    public function hasVoted($answer)
+    {
+        return $this->votes()->where([
+            'voter_id' => $this->id,
+            'answer_id' => $answer->id
+        ])->first();
+    }
+
+    /**
      * Activate user
      */
     public function activate()
@@ -96,5 +118,20 @@ class User extends Authenticatable
         }
 
         return $question->id;
+    }
+
+    public function vote($answer, $type = 'up')
+    {
+        if ($type == 'up') {
+            return $this->votes()->create([
+                'answer_id' => $answer->id,
+                'vote_value' => 1,
+            ]);
+        }
+
+        return $this->votes()->create([
+            'answer_id' => $answer->id,
+            'vote_value' => -1,
+        ]);
     }
 }
