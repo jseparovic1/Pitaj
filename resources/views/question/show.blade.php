@@ -72,11 +72,13 @@
         <div class="row">
             <h5 class="side-title">Povezano</h5>
             <div class="col">
-                @foreach($related as $q)
-                    <ul class="collection">
-                        <li class="collection-item" style="max-width: 300px;word-break: break-word">{{ $q->title }}</li>
-                    </ul>
-                @endforeach
+                <ul class="collection">
+                    @foreach($related as $q)
+                            <li class="collection-item" style="max-width: 300px;word-break: break-word">
+                                <a href="{{ route('question.single',['id' => $q->id])  }}"> {{$q->title}} </a>
+                            </li>
+                    @endforeach
+                </ul>
             </div>
         </div>
     </div>

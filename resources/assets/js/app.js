@@ -14,7 +14,7 @@ $( document ).ready(function(){
 });
 
 tinymce.init({
-    selector: 'textarea',
+    selector: '.tinyTextarea',
     menubar: false,
     skin: 'lightgray',
     statusbar: false,

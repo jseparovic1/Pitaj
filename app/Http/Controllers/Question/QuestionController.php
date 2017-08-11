@@ -58,7 +58,6 @@ class QuestionController extends Controller
         $tags =  $request->input('tags');
         $title = $request->input('title');
         $body = $request->input('body') ?? '';
-
         $tags = json_decode($tags);
 
         //publish question

@@ -26,7 +26,8 @@ btn.click(function() {
            id : questionId,
            _token : token.content
        }).done(function (data) {
-          console.log(data);
+            Materialize.toast('Question successfuly edited', 4000, 'green');
+            console.log(data);
        });
    }
    click++;

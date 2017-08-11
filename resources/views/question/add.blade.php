@@ -11,29 +11,28 @@
         <input id="token" type="hidden" name="_token" value="{{ csrf_token() }}">
         <div class="row">
             <div class="input-field col s12">
-                <input id="questionTitle" type="text" name="questionTitle" class="validate">
-                <label for="questionTitle" data-error="Polje je obavezno" data-success="Dobro pitanje">Vaše pitanje</label>
+                <input placeholder="Upišite pitanje" id="questionTitle" type="text" name="questionTitle" class="validate">
+                <label for="questionTitle" data-success="Dobro pitanje">Pitanje</label>
             </div>
         </div>
         <div class="row">
-            <span for="questionTitle">Dodatni opis</span>
             <div class="input-field col s12">
-                <textarea type="textarea" id="questionBody" name="questionBody" data-length="2000"></textarea>
+                <div class="row"><label for="questionBody" class="active" >Opis</label></div>
+                <textarea type="textarea" id="questionBody" class="tinyTextarea" name="questionBody"></textarea>
+                <span id="bodyError" class="red-text" hidden></span>
             </div>
         </div>
         <div class="row">
             <div class="col s12 input-field">
-                <label id="chip" class="validate">Tagirajte pitanje</label>
                 <div class="chips chips-placeholder"></div>
+                <span id="tagError" class="red-text" hidden></span>
             </div>
         </div>
         <div class="row">
             @include('partials.errors')
         </div>
         <div class="row">
-            <button id="questionFormSubmit" type="button" class="btn waves-effect waves-light col s6 offset-s3">
-                Pitaj
-            </button>
+            <button id="questionFormSubmit" type="button" class="btn waves-effect waves-light col s6 offset-s3">Pitaj</button>
         </div>
     </form>
     </div>
