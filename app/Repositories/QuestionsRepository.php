@@ -2,7 +2,6 @@
 
 namespace Pitaj\Repositories;
 
-use Illuminate\Database\Eloquent\Builder;
 use Pitaj\Models\Question;
 
 class QuestionsRepository
@@ -27,11 +26,9 @@ class QuestionsRepository
     protected $relatedLimit = 10;
 
     /**
-     * Query that we built
-     * @var Builder
+     * QuestionsRepository constructor.
+     * @param Question $question
      */
-    protected $builder;
-
     public function __construct(Question $question)
     {
         $this->question = $question;
@@ -41,12 +38,11 @@ class QuestionsRepository
      * Get latest questions with answers and tags so
      * there is no need to load id
      */
-    public function latest()
+    public function findLatest()
     {
         return  $this->question
-            ->with('answers')
-            ->with('tags')
-            ->latest()
+            ->with(['answers', 'tags', 'author'])
+            ->orderBy('created_at', 'DESC')
             ->take($this->questionLimit)
             ->get();
     }
@@ -63,5 +59,20 @@ class QuestionsRepository
             ->where('title', 'like', "%{$source->title}%")
             ->limit($this->relatedLimit)
             ->get();
+    }
+
+    /**
+     * @param $id
+     * @return \Illuminate\Database\Eloquent\Collection|\Illuminate\Database\Eloquent\Model
+     */
+    public function findById($id)
+    {
+        return $this->question->with([
+            'author',
+            'tags',
+            'answers' => function ($query) {
+                $query->with(['votes', 'author']);
+            }
+        ])->findOrFail($id);
     }
 }

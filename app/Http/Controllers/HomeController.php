@@ -7,27 +7,14 @@ use Pitaj\Repositories\QuestionsRepository;
 class HomeController extends Controller
 {
     /**
-     * @var QuestionsRepository
-     */
-    protected $questions;
-
-    /**
-     * HomeController constructor.
-     * @param QuestionsRepository $questions
-     */
-    public function __construct(QuestionsRepository $questions)
-    {
-        $this->questions = $questions;
-    }
-
-    /**
      * Show questions and tags
+     * @param QuestionsRepository $questions
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function index()
+    public function index(QuestionsRepository $questions)
     {
         //get latest questions with answers
-        $questions = $this->questions->latest();
+        $questions = $questions->findLatest();
 
         return view('question.index', compact('questions'));
     }

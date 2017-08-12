@@ -2,10 +2,10 @@
 
 namespace Pitaj\Http\Controllers\Question;
 
+use Illuminate\Foundation\Application;
 use Illuminate\Http\Request;
 use Pitaj\Http\Controllers\Controller;
 use Pitaj\Models\Question;
-use Pitaj\Query\QuestionsQuery;
 use Pitaj\Repositories\QuestionsRepository;
 
 class QuestionController extends Controller
@@ -16,20 +16,21 @@ class QuestionController extends Controller
     protected $questionsRepository;
 
     /**
-     * @var QuestionsQuery
+     * @var
      */
-    private $questionsQuery;
+    protected $app;
 
     /**
      * QuestionController constructor.
      * @param QuestionsRepository $questionsRepository
+     * @param Application $app
      */
-    public function __construct(QuestionsRepository $questionsRepository, QuestionsQuery $questionsQuery)
+    public function __construct(QuestionsRepository $questionsRepository, Application $app)
     {
         //set auth middleware so only authenticated user can access this page
         $this->middleware('auth')->except('show');
         $this->questionsRepository = $questionsRepository;
-        $this->questionsQuery = $questionsQuery;
+        $this->app = $app;
     }
 
     /**
@@ -54,10 +55,11 @@ class QuestionController extends Controller
             'body' => 'string|max:2000',
             'tags' => 'required'
         ]);
+        $purifier = $this->app->make('purifier');
 
         $tags =  $request->input('tags');
         $title = $request->input('title');
-        $body = $request->input('body') ?? '';
+        $body = $purifier->clean($request->input('body') ?? '');
         $tags = json_decode($tags);
 
         //publish question
@@ -74,9 +76,7 @@ class QuestionController extends Controller
      */
     public function show($id, $slug = null)
     {
-        $question = $this->questionsQuery->findById($id);
-
-        //get related questions d
+        $question = $this->questionsRepository->findById($id);
         $related = $this->questionsRepository->getRelated($question);
 
         //question is hit so increase its views
