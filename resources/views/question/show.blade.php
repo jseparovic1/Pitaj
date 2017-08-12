@@ -17,10 +17,12 @@
             </header>
             <main>
                 <section id="questionContent" data-id="{{ $question->id }}">
-                    <p>{!! $question->body !!}</p>
+                    {!! $question->body !!}
                 </section>
-                <div class="input-field col s12">
-                    <textarea id="questionEdit" class="materialize-textarea" style="display: none;"></textarea>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <textarea id="questionEdit" class="materialize-textarea questionEditMce" hidden></textarea>
+                    </div>
                 </div>
                 <section class="section" id="tags">
                     @foreach( $question->tags as $tag )
