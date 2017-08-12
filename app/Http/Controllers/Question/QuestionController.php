@@ -116,7 +116,8 @@ class QuestionController extends Controller
         $question = Question::findOrFail($id);
         $this->authorize('update', $question);
 
-        $body = $request->get('body');
+        $purifier = $this->app->make('purifier');
+        $body = $purifier->clean($request->get('body'));
         $title = $request->get('title') ?? $question->title;
         Question::where('id', $id)->update([
             'body' => $body,
@@ -126,7 +127,6 @@ class QuestionController extends Controller
         if ($request->isXmlHttpRequest()) {
             return response()->json("success");
         }
-
         return redirect()->route('question.single', ['id' => $question->id]);
     }
 
