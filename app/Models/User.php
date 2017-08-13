@@ -154,4 +154,9 @@ class User extends Authenticatable
         }
         return false;
     }
+
+    public function profileUrl()
+    {
+        return "/profile/$this->id/".str_slug($this->name);
+    }
 }

@@ -55,7 +55,7 @@ class QuestionsRepository
      */
     public function getRelated(Question $source)
     {
-        $qustions = $this->question
+        $questions = $this->question
             ->where([
                 ['title', 'like', "%{$source->title}%"],
                 ['id', '<>', "{$source->id}"]
@@ -63,7 +63,7 @@ class QuestionsRepository
             ->limit($this->relatedLimit)
             ->get();
 
-        return $qustions;
+        return $questions;
     }
 
     /**

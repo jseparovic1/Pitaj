@@ -8,12 +8,10 @@
         <div class="card-panel">
             <header class="section" id="questionTitle">
                 <h5  style="max-width: 600px;word-break: break-word">{{ $question->title }}</h5>
-                <i>
+                <a href="{{ $question->author->profileUrl() }}">
                     {{ $question->author->name }}
-                    {{ $question->author->lastName }}
-                    {{ $question->createdForHuman() }}
-                </i>
-                <div class="divider"></div>
+                </a>
+                <i>{{ $question->createdForHuman() }}</i>
             </header>
             <main>
                 <section id="questionContent" data-id="{{ $question->id }}">
@@ -35,20 +33,16 @@
                 </section>
                 @can('update', $question)
                     <div class="row" id="question-controls">
-                        <div class="section ">
-                            <div class="row">
-                                <button id="btn-edit" class="btn-flat btn-control">
-                                    <i class="material-icons">edit</i>
-                                </button>
-                                <form method="POST" action="{{ route('question.destroy',['question' => $question->id ]) }}">
-                                    {{ csrf_field() }}
-                                    {{ method_field('DELETE') }}
-                                    <button id="btn-delete" class="btn-flat">
-                                        <i class="material-icons">delete</i>
-                                    </button>
-                                </form>
-                            </div>
-                        </div>
+                        <button id="btn-edit" class="btn-flat btn-control">
+                            <i class="material-icons">edit</i>
+                        </button>
+                        <form method="POST" action="{{ route('question.destroy',['question' => $question->id ]) }}">
+                            {{ csrf_field() }}
+                            {{ method_field('DELETE') }}
+                            <button id="btn-delete" class="btn-flat">
+                                <i class="material-icons">delete</i>
+                            </button>
+                        </form>
                     </div>
                 @endcan
             </main>

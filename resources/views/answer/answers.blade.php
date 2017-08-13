@@ -24,7 +24,7 @@
         </div>
         <div class="col s12">
             <div id="questionTitle">
-                <i>{{ $answer->author->name }} {{ $answer->author->lastName }}</i>
+                <i><a href="{{ $answer->author->profileUrl() }}">{{ $answer->author->name }} {{ $answer->author->lastName }}</a></i>
             </div>
         </div>
     </div>
