@@ -1,6 +1,6 @@
 @extends('base.full')
 
-@section('title', 'Login')
+@section('title', 'Prijava')
 @section('pageTitle', 'Prijava')
 
 @section('content')
@@ -23,28 +23,26 @@
         <div class="row ">
            @include('partials.errors')
         </div>
-        <div class="row">
-            <div class="input-field">
-                <button type="submit" class="btn waves-effect waves-light col s6 offset-s3">Log in</button>
-            </div>
-        </div>
         <div class="row center-align">
-            <div>Ili</div>
+            <div class="col s12">
+                <button type="submit" class="btn waves-effect waves-light col s6 offset-s3">Prijava</button>
+            </div>
         </div>
         <div class="divider"></div>
         <div class="section">
             <div class="row center-align">
                 <div class="col s12">
-                    <a href="{{ route('login_fb',['provider' => 'facebook']) }}" class="btn s12" style="background-color: mediumblue"> Log in with facebook</a>
+                    <a href="{{ route('login_fb',['provider' => 'facebook']) }}" class="btn s12" style="background-color: mediumblue"> Facebook prijava</a>
                 </div>
-            </div>
-            <div class="row center-align">
-                <div>or</div>
             </div>
             <div class="row center-align">
                 <div class="col s12">
-                    <a href="{{ route('login_fb',['provider' => 'google']) }}" class="btn s12" style="background-color :red"> Log in with google+</a>
+                    <a href="{{ route('login_fb',['provider' => 'google']) }}" class="btn s12" style="background-color :red"> Google prijava</a>
                 </div>
+            </div>
+            <div class="row center-align">
+                <span class="text-muted">Ako nemate račun registrirajte se</span>
+                <a href="{{ route('register.showForm') }}">ovdje</a>
             </div>
         </div>
     </form>

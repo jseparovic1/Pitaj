@@ -36,7 +36,7 @@
             <div class="row ">
                @include('partials.errors')
             </div>
-            <input type="submit" class="btn waves-effect waves-light col s6 offset-s3" value="Register">
+            <input type="submit" class="btn waves-effect waves-light col s6 offset-s3" value="Potvrdi">
         </form>
 
 

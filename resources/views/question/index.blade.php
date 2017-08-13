@@ -10,6 +10,9 @@
             @foreach($questions as $question)
                 @include('question.partials.question')
             @endforeach
+            <div class="row center">
+                {{ $questions->links() }}
+            </div>
         @else
             <div class="center-align">
                 <i class="material-icons large">code</i>

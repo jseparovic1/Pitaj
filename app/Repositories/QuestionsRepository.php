@@ -16,7 +16,7 @@ class QuestionsRepository
      *
      * @var int
      */
-    protected $questionLimit = 10;
+    protected $questionLimit = 30;
 
     /**
      * How many related questions to fetch
@@ -43,8 +43,7 @@ class QuestionsRepository
         return  $this->question
             ->with(['answers', 'tags', 'author'])
             ->orderBy('created_at', 'DESC')
-            ->take($this->questionLimit)
-            ->get();
+            ->paginate($this->questionLimit);
     }
 
     /**
