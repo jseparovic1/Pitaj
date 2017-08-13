@@ -27,6 +27,7 @@ class Answer extends ModelBase
 {
     protected $appends = ['score'];
 
+    protected $hidden = ['score'];
     /**
      * Get question on witch answer is posted
      */

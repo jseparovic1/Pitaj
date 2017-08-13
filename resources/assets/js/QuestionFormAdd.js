@@ -39,7 +39,7 @@ form.click(function () {
             _token : token.value
         }).done(function (data) {
             if (!isNaN(parseFloat(data)) && isFinite(data)) {
-                window.location.href = "/pitanja/" + data;
+                window.location.replace("/pitanja/" + data);
             }
         });
     }
