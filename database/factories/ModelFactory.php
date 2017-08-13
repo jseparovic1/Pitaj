@@ -18,7 +18,8 @@ $factory->define(Pitaj\Models\User::class, function (Faker\Generator $faker) {
     return [
         'name' => $faker->name,
         'email' => $faker->unique()->safeEmail,
-        'avatarUrl' => $faker->imageUrl('48','48'),
+        'avatarUrl' => $faker->imageUrl('100','100'),
+        'description' => $faker->realText("100"),
         'password' => $password ?: $password = bcrypt('sifra'),
         'activated' => 1,
         'remember_token' => str_random(10),

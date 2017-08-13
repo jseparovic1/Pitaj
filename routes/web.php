@@ -50,5 +50,8 @@ Route::group(["namespace" => 'Answer'], function () {
     Route::get('/vote/{answer}/{action}', 'VoteController@vote')->name('answer.vote');
 });
 
+Route::group(["namespace" => "Profile"], function () {
+    Route::get('/profile/{id}/{slug?}', 'ProfileController@show')->name('user.profile');
+});
 
 
