@@ -32,12 +32,12 @@
         <div class="section">
             <div class="row center-align">
                 <div class="col s12">
-                    <a href="{{ route('login_fb',['provider' => 'facebook']) }}" class="btn s12" style="background-color: mediumblue"> Facebook prijava</a>
+                    <a href="{{ route('login_fb',['provider' => 'facebook']) }}" class="btn s12"> Facebook prijava</a>
                 </div>
             </div>
             <div class="row center-align">
                 <div class="col s12">
-                    <a href="{{ route('login_fb',['provider' => 'google']) }}" class="btn s12" style="background-color :red"> Google prijava</a>
+                    <a href="{{ route('login_fb',['provider' => 'google']) }}" class="btn s12"> Google prijava</a>
                 </div>
             </div>
             <div class="row center-align">

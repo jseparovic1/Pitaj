@@ -2,7 +2,7 @@
 @extends('base.master')
 
 @section('header')
-    @include('partials.nav')s
+    @include('partials.nav')
 @endsection
 
 @section('container')
