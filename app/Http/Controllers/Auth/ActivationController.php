@@ -27,6 +27,7 @@ class ActivationController extends Controller
         }
 
         $user->activate();
+        $request->session()->flash('activated', '');
 
         return view('auth.login');
     }

@@ -2,8 +2,8 @@
 
 Pozdrav {{ $user->name }} ,
 
-Dobro došli na Pitaj.hr
-Da bi počeli sa korištenjem aplikacije morate potvrditi vašu email adresu.
+Dobro došli na Pitaj.hr.
+Za nastavak korištenja aplikacije potrebno je potvrditi vašu email adressu,
 
 @component('mail::button', ['url' => $activationUrl])
 Potvrdi email

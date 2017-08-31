@@ -72,6 +72,7 @@ class LoginController extends Controller
         }
 
         if (Auth::attempt(['email' => $request->get('email'), 'password' =>  $request->get('password')])) {
+
             return $this->sendLoginResponse($request);
         }
 
@@ -132,8 +133,14 @@ class LoginController extends Controller
         }
 
         Auth::login($userLocal);
+        request()->session()->flash('authenticated', '');
 
         return redirect()->route('home');
+    }
+
+    protected function authenticated(Request $request, $user)
+    {
+        $request->session()->flash('authenticated', '');
     }
 
 }
