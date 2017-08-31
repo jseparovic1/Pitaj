@@ -58,10 +58,13 @@ class RegisterController extends Controller
         //create new user
         $user = $this->create($request->all());
 
-        //fire user registered event
+        //fire user registered event;
         event(new Registered($user));
 
-        return redirect()->to($this->redirectTo);
+        return view('auth.activate')->with([
+            'email' => $request->get('email'),
+            'name' => $request->get('name'),
+        ]);
     }
 
     /**
@@ -83,7 +86,7 @@ class RegisterController extends Controller
      * Create a new user instance after a valid registration.
      *
      * @param  array  $data
-     * @return User
+     * @return \Illuminate\Database\Eloquent\Model
      */
     protected function create(array $data)
     {
