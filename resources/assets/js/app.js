@@ -11,6 +11,16 @@ require('./QuestionEdit');
 
 $( document ).ready(function(){
     $(".button-collapse").sideNav();
+    $('.dropdown-button').dropdown({
+            inDuration: 300,
+            outDuration: 225,
+            hover: true,
+            gutter: 0,
+            belowOrigin: true,
+            alignment: 'left', // Displays dropdown with edge aligned to the left of button
+            stopPropagation: false
+        }
+    );
 });
 
 tinymce.init({

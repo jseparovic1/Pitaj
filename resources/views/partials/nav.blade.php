@@ -9,13 +9,17 @@
                         <li><a href="/search"><i class="material-icons">search</i></a></li>
                         <li><a href="{{ route('question.askForm') }}">Postavi pitanje</a></li>
                     @if( Auth::check() )
-                        {{--<li><a><img src="{{ Auth::user()->avatarUrl }}" id="nav-avatar" class="circle"></a></li>--}}
-                        <li><a class='dropdown-button' href='#' data-activates='user-actions' below-origin="true" hover="true">
-                                {{ Auth::user()->name }}
-                        </a></li>
                         <ul id='user-actions' class='dropdown-content'>
+                            <li><a href="{{ route('user.profile', ['id' => Auth::id() ]) }}">Profil</a></li>
                             <li><a href="{{ route('session.logOut') }}">Odjava</a></li>
                         </ul>
+                        <li>
+                            <a class='dropdown-button' href='#' data-activates='user-actions' below-origin="true" hover="true">
+                                <img src="{{ Auth::user()->avatarUrl }}" id="nav-avatar" class="circle">
+                                {{ Auth::user()->name }}
+                                <i class="material-icons right">arrow_drop_down</i>
+                            </a>
+                        </li>
                     @else
                         <li><a href="{{ route('session.loginForm') }}">Prijava</a></li>
                         <li><a href="{{ route('register.showForm') }}">Registracija</a></li>

@@ -47,3 +47,22 @@ h5:before {
 #btn-delete {
     color: #ea454b;
 }
+
+.message {
+    border-radius: 25px;
+}
+
+.success {
+    @extend .message;
+    background-color: $success-color;
+}
+
+.error {
+    @extend .message;
+    background-color: $error-color;
+}
+
+.warning {
+    @extend .message;
+    background-color: $secondary-color;
+}

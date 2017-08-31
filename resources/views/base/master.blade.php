@@ -30,5 +30,6 @@
 
         @include('partials.scripts')
     </body>
+    @include('partials.flash')
 </html>
 
