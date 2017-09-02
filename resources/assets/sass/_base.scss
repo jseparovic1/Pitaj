@@ -66,3 +66,19 @@ h5:before {
     @extend .message;
     background-color: $secondary-color;
 }
+
+#search-box {
+    float: left;
+    display: block;
+    clear: left;
+    margin-left: 150px;
+    border-bottom: 1px solid white;
+    color: white;
+}
+
+#dropdown-menu {
+    position: fixed;
+    left: 10rem;
+    z-index: 100;
+    background-size: cover;
+}
