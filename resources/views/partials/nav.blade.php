@@ -3,10 +3,16 @@
         <div class="navbar-fixed nav-wrapper">
             <div class="row">
                 <div class="col s12">
-                    <a href="{{ route('home') }}" class="brand-logo">Pitaj</a>
                     <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+                    <a href="{{ route('home') }}" class="brand-logo">Pitaj</a>
+                    <ul class="left hide-on-med-and-down">
+                        <li>
+                            <label for="search-box"></label>
+                            <input id="search-box" type="text">
+                            <i class="material-icons">search</i>
+                        </li>
+                    </ul>
                     <ul id="nav-mobile" class="right hide-on-med-and-down">
-                        <li><a href="/search"><i class="material-icons">search</i></a></li>
                         <li><a href="{{ route('question.askForm') }}">Postavi pitanje</a></li>
                     @if( Auth::check() )
                         <ul id='user-actions' class='dropdown-content'>
@@ -29,6 +35,9 @@
             </div>
         </div>
     </nav>
+</div>
+<div id="dropdown-menu">
+     <div id="dropDown-data" class="collection"></div>
 </div>
 <ul class="side-nav slide-out" id="mobile-demo">
     <li><a class="light">Pitaj.hr</a></li>

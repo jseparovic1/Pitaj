@@ -37,13 +37,13 @@
                        class="material-icons grey-text">thumb_down</a>
                 </div>
             </div>
-        @endif
         </div>
-         <div class="col s12">
+        @endif
+        <div class="col s12">
             <div id="questionTitle">
                 <i><a href="{{ $answer->author->profileUrl() }}">{{ $answer->author->name }} {{ $answer->author->lastName }}</a></i>
             </div>
         </div>
-     </div>
-</div>
+        </div>
+    </div>
 </div>

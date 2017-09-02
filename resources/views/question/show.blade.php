@@ -5,48 +5,46 @@
 {{-- Show single question --}}
 @section('content')
     <div class="section">
-        <div class="card-panel">
-            <header class="section" id="questionTitle">
-                <h5  style="max-width: 600px;word-break: break-word">{{ $question->title }}</h5>
-                <a href="{{ $question->author->profileUrl() }}">
-                    {{ $question->author->name }}
-                </a>
-                <i>{{ $question->createdForHuman() }}</i>
-            </header>
-            <main>
-                <section id="questionContent" data-id="{{ $question->id }}">
-                    {!! $question->body !!}
-                </section>
-                <div class="row">
-                    <div class="input-field col s12">
-                        <textarea id="questionEdit" class="materialize-textarea questionEditMce" hidden></textarea>
-                    </div>
+        <header class="section" id="questionTitle">
+            <h5  style="max-width: 600px;word-break: break-word">{{ $question->title }}</h5>
+            <a href="{{ $question->author->profileUrl() }}">
+                {{ $question->author->name }}
+            </a>
+            <i>{{ $question->createdForHuman() }}</i>
+        </header>
+        <main>
+            <section id="questionContent" data-id="{{ $question->id }}">
+                {!! $question->body !!}
+            </section>
+            <div class="row">
+                <div class="input-field col s12">
+                    <textarea id="questionEdit" class="materialize-textarea questionEditMce" hidden></textarea>
                 </div>
-                <section class="section" id="tags">
-                    @foreach( $question->tags as $tag )
-                        <div class="chip chipTag">
-                            <a href="{{ route('tag.show', ['tag' => $tag->name]) }}">
-                                {{ $tag->name }}
-                            </a>
-                        </div>
-                    @endforeach
-                </section>
-                @can('update', $question)
-                    <div class="row" id="question-controls">
-                        <button id="btn-edit" class="btn-flat btn-control">
-                            <i class="material-icons">edit</i>
-                        </button>
-                        <form method="POST" action="{{ route('question.destroy',['question' => $question->id ]) }}">
-                            {{ csrf_field() }}
-                            {{ method_field('DELETE') }}
-                            <button id="btn-delete" class="btn-flat">
-                                <i class="material-icons">delete</i>
-                            </button>
-                        </form>
+            </div>
+            <section class="section" id="tags">
+                @foreach( $question->tags as $tag )
+                    <div class="chip chipTag">
+                        <a href="{{ route('tag.show', ['tag' => $tag->name]) }}">
+                            {{ $tag->name }}
+                        </a>
                     </div>
-                @endcan
-            </main>
-        </div>
+                @endforeach
+            </section>
+            @can('update', $question)
+                <div class="row" id="question-controls">
+                    <button id="btn-edit" class="btn-flat btn-control">
+                        <i class="material-icons">edit</i>
+                    </button>
+                    <form method="POST" action="{{ route('question.destroy',['question' => $question->id ]) }}">
+                        {{ csrf_field() }}
+                        {{ method_field('DELETE') }}
+                        <button id="btn-delete" class="btn-flat">
+                            <i class="material-icons">delete</i>
+                        </button>
+                    </form>
+                </div>
+            @endcan
+        </main>
     </div>
     {{-- Answers area --}}
     <div class="section" id="answers">
@@ -75,10 +73,13 @@
                             </li>
                     @endforeach
                 </ul>
+                @if(count($related) === 0)
+                    <p>Nema povezanih pitanja</p>
+                @endif
             </div>
         </div>
     </div>
-    <div class="section">
+    <div class="section hide-on-med-and-down">
         <div id="row">
             <h5 class="side-title">Statistika</h5>
             <div class="col">
