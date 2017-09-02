@@ -6,28 +6,6 @@ use Pitaj\Models\ModelBase;
 
 /**
  * Pitaj\Models\Question
- *
- * @property int $id
- * @property string $title
- * @property string $slug
- * @property string $body
- * @property int $author_id
- * @property int $views
- * @property \Carbon\Carbon $created_at
- * @property \Carbon\Carbon $updated_at
- * @property-read \Illuminate\Database\Eloquent\Collection|\Pitaj\Models\Answer[] $answers
- * @property-read \Pitaj\Models\User $author
- * @property-read \Illuminate\Database\Eloquent\Collection|\Pitaj\Models\Tag[] $tags
- * @method static \Illuminate\Database\Query\Builder|\Pitaj\Models\Question popular()
- * @method static \Illuminate\Database\Query\Builder|\Pitaj\Models\Question whereAuthorId($value)
- * @method static \Illuminate\Database\Query\Builder|\Pitaj\Models\Question whereBody($value)
- * @method static \Illuminate\Database\Query\Builder|\Pitaj\Models\Question whereCreatedAt($value)
- * @method static \Illuminate\Database\Query\Builder|\Pitaj\Models\Question whereId($value)
- * @method static \Illuminate\Database\Query\Builder|\Pitaj\Models\Question whereSlug($value)
- * @method static \Illuminate\Database\Query\Builder|\Pitaj\Models\Question whereTitle($value)
- * @method static \Illuminate\Database\Query\Builder|\Pitaj\Models\Question whereUpdatedAt($value)
- * @method static \Illuminate\Database\Query\Builder|\Pitaj\Models\Question whereViews($value)
- * @mixin \Eloquent
  */
 class Question extends ModelBase
 {

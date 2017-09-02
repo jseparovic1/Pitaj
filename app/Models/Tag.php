@@ -6,17 +6,6 @@ use Pitaj\Models\ModelBase;
 
 /**
  * Pitaj\Models\Tag
- *
- * @property int $id
- * @property string $name
- * @property \Carbon\Carbon $created_at
- * @property \Carbon\Carbon $updated_at
- * @property-read \Illuminate\Database\Eloquent\Collection|\Pitaj\Models\Question[] $questions
- * @method static \Illuminate\Database\Query\Builder|\Pitaj\Models\Tag whereCreatedAt($value)
- * @method static \Illuminate\Database\Query\Builder|\Pitaj\Models\Tag whereId($value)
- * @method static \Illuminate\Database\Query\Builder|\Pitaj\Models\Tag whereName($value)
- * @method static \Illuminate\Database\Query\Builder|\Pitaj\Models\Tag whereUpdatedAt($value)
- * @mixin \Eloquent
  */
 class Tag extends ModelBase
 {

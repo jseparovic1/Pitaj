@@ -6,8 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * Pitaj\Models\ModelBase
- *
- * @mixin \Eloquent
  */
 class ModelBase extends Model
 {
