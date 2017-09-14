@@ -4,10 +4,11 @@ namespace Pitaj\Models;
 
 use Pitaj\Models\ModelBase;
 
+/**
+ * Pitaj\Models\Question
+ */
 class Question extends ModelBase
 {
-    //TODO implement created event on question
-
     /**
      * Get all tags associated with question
      */

@@ -77,7 +77,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => 'hr',
 
     /*
     |--------------------------------------------------------------------------
@@ -162,10 +162,6 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-
-        /*
-         * Package Service Providers...
-         */
         Laravel\Tinker\TinkerServiceProvider::class,
 
         /*
@@ -177,11 +173,14 @@ return [
         Pitaj\Providers\EventServiceProvider::class,
         Pitaj\Providers\RouteServiceProvider::class,
 
+        Pitaj\Providers\ViewComposerServiceProvider::class,
+
         /**
-         * Materialize Sass
+         * 3d party services
          */
         Qntm\LaravelMaterializeSass\MaterializeSassServiceProvider::class,
-
+        Mews\Purifier\PurifierServiceProvider::class,
+        Laravel\Socialite\SocialiteServiceProvider::class,
     ],
 
     /*
@@ -230,12 +229,13 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+        'Purifier' => Mews\Purifier\Facades\Purifier::class,
 
         /**
          * Aliasses for custom classes
          */
         'MaterializeSass' => Qntm\LaravelMaterializeSass\MaterializeSassBuilder::class,
-
+        'Socialite' => Laravel\Socialite\Facades\Socialite::class,
     ],
 
 ];

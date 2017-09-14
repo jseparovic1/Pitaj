@@ -20,3 +20,65 @@ main {
     margin: 5% auto;
 }
 
+h5:before {
+    content: "# ";  /* Some fancy character */
+    color: #3F51B5;
+    opacity: .3;
+    margin-right: .25em;
+}
+
+.page-footer {
+    padding-top: 0;
+}
+
+#nav-avatar {
+    width: 40px;
+    height: 40px;
+    margin: 0;
+    padding: 0;
+}
+
+#question-controls .btn-control {
+    float: left;
+}
+#btn-edit {
+    color: #03a9f4;
+}
+#btn-delete {
+    color: #ea454b;
+}
+
+.message {
+    border-radius: 25px;
+}
+
+.success {
+    @extend .message;
+    background-color: $success-color;
+}
+
+.error {
+    @extend .message;
+    background-color: $error-color;
+}
+
+.warning {
+    @extend .message;
+    background-color: $secondary-color;
+}
+
+#search-box {
+    float: left;
+    display: block;
+    clear: left;
+    margin-left: 150px;
+    border-bottom: 1px solid white;
+    color: white;
+}
+
+#dropdown-menu {
+    position: fixed;
+    left: 10rem;
+    z-index: 100;
+    background-size: cover;
+}

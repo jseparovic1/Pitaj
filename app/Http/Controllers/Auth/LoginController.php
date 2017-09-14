@@ -4,8 +4,11 @@ namespace Pitaj\Http\Controllers\Auth;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
+use Laravel\Socialite\Facades\Socialite;
 use Pitaj\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Pitaj\Models\User;
 
 class LoginController extends Controller
 {
@@ -69,6 +72,7 @@ class LoginController extends Controller
         }
 
         if (Auth::attempt(['email' => $request->get('email'), 'password' =>  $request->get('password')])) {
+
             return $this->sendLoginResponse($request);
         }
 
@@ -96,4 +100,47 @@ class LoginController extends Controller
 
         return redirect()->route('home');
     }
+
+    /**
+     * Redirect user to facebook login provider
+     *
+     * @return mixed
+     */
+    public function redirectToProvider($provider)
+    {
+        return Socialite::driver($provider)
+            ->redirect();
+    }
+
+    /**
+     * Get information from facebook
+     *
+     */
+    public function handleProviderCallback($provider)
+    {
+        $user = Socialite::driver($provider)->user();
+
+        $userLocal = User::where(['email' => $user->email])->get()->first();
+
+        //if we didnt fond user we will register him here
+        if (! $userLocal) {
+            $userLocal = User::create([
+                'name' => $user->name,
+                'email' => $user->email,
+                'avatarUrl' => $user->avatar,
+                'activated' => 1
+            ]);
+        }
+
+        Auth::login($userLocal);
+        request()->session()->flash('authenticated', '');
+
+        return redirect()->route('home');
+    }
+
+    protected function authenticated(Request $request, $user)
+    {
+        $request->session()->flash('authenticated', '');
+    }
+
 }

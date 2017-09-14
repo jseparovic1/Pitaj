@@ -17,8 +17,9 @@ class CreateQuestionsTable extends Migration
             $table->increments('id');
             $table->string('title');
             $table->string('slug');
+            $table->text('body')->nullable();
             $table->integer('author_id')->unsigned();
-            $table->integer('views')->unsigned()->default(random_int(100,800));
+            $table->integer('views')->unsigned()->default(0);
             $table->timestamps();
         });
     }

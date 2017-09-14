@@ -4,6 +4,9 @@ namespace Pitaj\Models;
 
 use Pitaj\Models\ModelBase;
 
+/**
+ * Pitaj\Models\Activation
+ */
 class Activation extends ModelBase
 {
     /**
